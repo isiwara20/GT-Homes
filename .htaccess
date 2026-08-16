@@ -66,34 +66,20 @@ DirectoryIndex index.php
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
-# ──────────────────────────────────────
-# Protect Sensitive Directories
-# ──────────────────────────────────────
+# Deny access to sensitive files and dotfiles (.git, .env, etc.)
+RewriteRule (^\.|/\.) - [F,L]
+RewriteRule ^storage/(.*)$ - [F,L]
 
-# Deny direct access to config files
-<Files "*.php">
-    <FilesMatch "^(db|app|mail|init)\.php$">
+# Deny access to specific PHP config files and log files
+<FilesMatch "^(db|app|mail|init)\.php$|\.log$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
         Order allow,deny
         Deny from all
-    </FilesMatch>
-</Files>
-
-# Deny access to logs
-<FilesMatch "\.(log)$">
-    Order allow,deny
-    Deny from all
+    </IfModule>
 </FilesMatch>
-
-# Deny access to .git
-<DirectoryMatch "^(.*/)?\.git">
-    Order allow,deny
-    Deny from all
-</DirectoryMatch>
-
-# Prevent direct access to storage directory
-<IfModule mod_rewrite.c>
-    RewriteRule ^storage/(.*)$ - [F,L]
-</IfModule>
 
 # ──────────────────────────────────────
 # PHP Settings (if allowed by host)
