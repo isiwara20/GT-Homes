@@ -1,0 +1,120 @@
+/* ============================================================
+   GT HOMES Holiday Resort — CSS Reset & Normalize
+   File: assets/css/reset.css
+   Based on modern CSS reset best practices.
+   ============================================================ */
+
+/* Box model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Smooth scrolling (respect OS preference) */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+}
+
+/* Media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Form elements inherit font */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Remove link underline by default (we control it per-context) */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Button cursor */
+button,
+[type="button"],
+[type="submit"],
+[type="reset"] {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Table border collapse */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Fieldset & legend reset */
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+/* HR reset */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Focus visible outline */
+:focus-visible {
+  outline: 2px solid var(--color-brand-lovi);
+  outline-offset: 2px;
+}

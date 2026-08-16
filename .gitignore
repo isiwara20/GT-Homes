@@ -1,0 +1,73 @@
+# GT HOMES Holiday Resort — .gitignore
+
+# ──────────────────────────────────────
+# Environment & Credentials
+# ──────────────────────────────────────
+# If you ever move to .env files, exclude them:
+.env
+.env.*
+!.env.example
+
+# ──────────────────────────────────────
+# Logs
+# ──────────────────────────────────────
+storage/logs/*.log
+!storage/logs/.gitkeep
+
+# ──────────────────────────────────────
+# User Uploads
+# ──────────────────────────────────────
+storage/uploads/rooms/*
+storage/uploads/dining/*
+storage/uploads/gallery/*
+storage/uploads/packages/*
+!storage/uploads/**/.gitkeep
+
+# Temp files
+storage/temp/*
+!storage/temp/.gitkeep
+
+# ──────────────────────────────────────
+# IDE / Editor Files
+# ──────────────────────────────────────
+.vscode/
+.idea/
+*.code-workspace
+.project
+*.sublime-project
+*.sublime-workspace
+
+# ──────────────────────────────────────
+# OS Files
+# ──────────────────────────────────────
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ──────────────────────────────────────
+# PHP / Composer (if ever used)
+# ──────────────────────────────────────
+vendor/
+composer.lock
+
+# ──────────────────────────────────────
+# Node (if ever used for build tools)
+# ──────────────────────────────────────
+node_modules/
+npm-debug.log
+package-lock.json
+
+# ──────────────────────────────────────
+# Backup Files
+# ──────────────────────────────────────
+*.bak
+*.backup
+*.sql.gz
+*.sql.zip
+
+# ──────────────────────────────────────
+# Sensitive Config Overrides
+# ──────────────────────────────────────
+# Add a config/local.php for local credentials that overrides db.php
+config/local.php

@@ -1,0 +1,148 @@
+/* ============================================================
+   GT HOMES Holiday Resort — Responsive Breakpoints
+   File: assets/css/responsive.css
+   ============================================================ */
+
+/* ──────────────────────────────────────
+   Breakpoints reference:
+   --container-sm:  640px  (mobile landscape)
+   --container-md:  768px  (tablet)
+   --container-lg:  1024px (laptop)
+   --container-xl:  1280px (desktop)
+   --container-2xl: 1440px (large desktop)
+────────────────────────────────────── */
+
+/* Large Desktop */
+@media (max-width: 1440px) {
+  .container {
+    padding-inline: var(--space-8);
+  }
+}
+
+/* Desktop */
+@media (max-width: 1280px) {
+  .public-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+}
+
+/* Laptop */
+@media (max-width: 1024px) {
+  h1 { font-size: var(--text-3xl); }
+  h2 { font-size: var(--text-2xl); }
+  h3 { font-size: var(--text-xl); }
+
+  .grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .grid--3 { grid-template-columns: repeat(2, 1fr); }
+
+  /* Admin sidebar collapses */
+  .admin-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .admin-sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .admin-main {
+    margin-left: 0;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 60px;
+  }
+
+  .container {
+    padding-inline: var(--space-4);
+  }
+
+  .section {
+    padding-block: var(--space-12);
+  }
+
+  /* Nav: hide links, show hamburger */
+  .public-nav__links,
+  .public-nav__cta {
+    display: none;
+  }
+
+  .public-nav__hamburger {
+    display: flex;
+  }
+
+  .hero__title {
+    font-size: var(--text-3xl);
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .grid--2,
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: 1fr;
+  }
+
+  .public-footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .public-footer__bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .admin-body {
+    padding: var(--space-4);
+  }
+
+  .admin-topbar {
+    padding: var(--space-4);
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  h1 { font-size: var(--text-2xl); }
+  h2 { font-size: var(--text-xl); }
+
+  .hero {
+    min-height: 70vh;
+  }
+
+  .auth-card {
+    padding: var(--space-6);
+  }
+
+  .btn--xl {
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-base);
+  }
+
+  .card__body {
+    padding: var(--space-4);
+  }
+}
+
+/* Print */
+@media print {
+  .public-nav,
+  .admin-sidebar,
+  .admin-topbar,
+  .public-footer {
+    display: none;
+  }
+
+  .admin-main,
+  .page-content {
+    margin: 0;
+    padding: 0;
+  }
+}

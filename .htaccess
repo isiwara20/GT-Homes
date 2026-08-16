@@ -1,0 +1,112 @@
+# ============================================================
+# GT HOMES Holiday Resort — Apache .htaccess
+# ============================================================
+# IMPORTANT: Apache mod_rewrite must be enabled.
+# In XAMPP: ensure 'LoadModule rewrite_module' is active in httpd.conf
+# ============================================================
+
+Options -Indexes -MultiViews
+DirectoryIndex index.php
+
+# ──────────────────────────────────────
+# Enable URL Rewriting
+# ──────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Set the base — must match your XAMPP subdirectory
+    RewriteBase /GT-Homes/
+
+    # ── Do NOT rewrite real files/directories ──
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # ────────────────────────────────────
+    # Admin Auth Routes
+    # (intentionally not linked from public nav)
+    # ────────────────────────────────────
+    RewriteRule ^login/?$          login.php [L,QSA]
+    RewriteRule ^login/submit/?$   login.php [L,QSA]
+    RewriteRule ^logout/?$         logout.php [L,QSA]
+
+    # ────────────────────────────────────
+    # Admin Panel
+    # ────────────────────────────────────
+    RewriteRule ^admin/?$          admin_dashboard.php [L,QSA]
+
+    # ────────────────────────────────────
+    # Public Pages
+    # ────────────────────────────────────
+    RewriteRule ^rooms/?$          rooms.php [L,QSA]
+    RewriteRule ^room/([a-z0-9\-]+)/?$  room_details.php?slug=$1 [L,QSA]
+    RewriteRule ^dining/?$         dining.php [L,QSA]
+    RewriteRule ^experiences/?$    experiences.php [L,QSA]
+    RewriteRule ^gallery/?$        gallery.php [L,QSA]
+    RewriteRule ^about/?$          about.php [L,QSA]
+    RewriteRule ^contact/?$        contact.php [L,QSA]
+    RewriteRule ^contact/submit/?$ contact.php [L,QSA]
+    RewriteRule ^booking/?$        booking.php [L,QSA]
+    RewriteRule ^booking/submit/?$ booking.php [L,QSA]
+
+    # ────────────────────────────────────
+    # API Endpoints
+    # ────────────────────────────────────
+    RewriteRule ^api/availability/?$ api_check_availability.php [L,QSA]
+    RewriteRule ^api/booking/?$      api_booking_enquiry.php [L,QSA]
+</IfModule>
+
+# ──────────────────────────────────────
+# Security Headers
+# ──────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ──────────────────────────────────────
+# Protect Sensitive Directories
+# ──────────────────────────────────────
+
+# Deny direct access to config files
+<Files "*.php">
+    <FilesMatch "^(db|app|mail|init)\.php$">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+</Files>
+
+# Deny access to logs
+<FilesMatch "\.(log)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Deny access to .git
+<DirectoryMatch "^(.*/)?\.git">
+    Order allow,deny
+    Deny from all
+</DirectoryMatch>
+
+# Prevent direct access to storage directory
+<IfModule mod_rewrite.c>
+    RewriteRule ^storage/(.*)$ - [F,L]
+</IfModule>
+
+# ──────────────────────────────────────
+# PHP Settings (if allowed by host)
+# ──────────────────────────────────────
+<IfModule mod_php.c>
+    php_flag display_errors Off
+    php_value session.cookie_httponly 1
+    php_value session.use_strict_mode 1
+</IfModule>
+
+# ──────────────────────────────────────
+# Custom Error Documents
+# ──────────────────────────────────────
+# ErrorDocument 403 /GT-Homes/views/errors/403.php
+# ErrorDocument 404 /GT-Homes/views/errors/404.php
+# ErrorDocument 500 /GT-Homes/views/errors/500.php
