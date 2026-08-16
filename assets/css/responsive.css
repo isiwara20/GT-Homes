@@ -1,148 +1,165 @@
 /* ============================================================
-   GT HOMES Holiday Resort — Responsive Breakpoints
+   GT HOMES Holiday Resort — Responsive Styles
    File: assets/css/responsive.css
    ============================================================ */
 
-/* ──────────────────────────────────────
-   Breakpoints reference:
-   --container-sm:  640px  (mobile landscape)
-   --container-md:  768px  (tablet)
-   --container-lg:  1024px (laptop)
-   --container-xl:  1280px (desktop)
-   --container-2xl: 1440px (large desktop)
-────────────────────────────────────── */
-
-/* Large Desktop */
+/* 1440px Desktop */
 @media (max-width: 1440px) {
-  .container {
-    padding-inline: var(--space-8);
+  .hero__title {
+    font-size: clamp(2.3rem, 4.5vw, 3.8rem);
   }
 }
 
-/* Desktop */
+/* 1280px Laptop / Small Desktop */
 @media (max-width: 1280px) {
+  .rooms-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
   .public-footer__grid {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+  .special-memories-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* Laptop */
+/* 1024px Tablet Landscape */
 @media (max-width: 1024px) {
-  h1 { font-size: var(--text-3xl); }
-  h2 { font-size: var(--text-2xl); }
-  h3 { font-size: var(--text-xl); }
-
-  .grid--4 { grid-template-columns: repeat(2, 1fr); }
-  .grid--3 { grid-template-columns: repeat(2, 1fr); }
-
-  /* Admin sidebar collapses */
-  .admin-sidebar {
-    transform: translateX(-100%);
+  .hero {
+    min-height: 80vh;
   }
-
-  .admin-sidebar.is-open {
-    transform: translateX(0);
+  .hero__vertical-tag {
+    display: none;
   }
-
-  .admin-main {
-    margin-left: 0;
+  .welcome-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .welcome-media__img-box {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .booking-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .feature-strip {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .feature-strip__item::after {
+    display: none;
+  }
+  .rooms-grid,
+  .rooms-grid--secondary,
+  .experiences-grid,
+  .dining-grid,
+  .why-grid,
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 220px;
+  }
+  .gallery-item--wide {
+    grid-column: span 2;
+  }
+  .special-memories-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Tablet */
+/* 768px Tablet Portrait & Mobile */
 @media (max-width: 768px) {
-  :root {
-    --nav-height: 60px;
-  }
-
-  .container {
-    padding-inline: var(--space-4);
-  }
-
-  .section {
-    padding-block: var(--space-12);
-  }
-
-  /* Nav: hide links, show hamburger */
   .public-nav__links,
   .public-nav__cta {
     display: none;
   }
-
   .public-nav__hamburger {
     display: flex;
   }
-
-  .hero__title {
-    font-size: var(--text-3xl);
+  .hero {
+    min-height: 75vh;
+    padding-top: calc(var(--nav-height) + 1.5rem);
+    padding-bottom: 4rem;
   }
-
   .hero__actions {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    width: 100%;
   }
-
-  .grid--2,
-  .grid--3,
-  .grid--4 {
+  .hero__actions .btn {
+    width: 100%;
+  }
+  .booking-panel-wrapper {
+    margin-top: -2.5rem;
+    padding-inline: 1rem;
+  }
+  .booking-panel {
+    padding: 1.25rem;
+  }
+  .booking-form {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .booking-form .btn {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .feature-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .welcome-features {
     grid-template-columns: 1fr;
   }
-
+  .rooms-grid,
+  .rooms-grid--secondary,
+  .experiences-grid,
+  .dining-grid,
+  .why-grid,
+  .testimonials-grid,
+  .special-memories-grid {
+    grid-template-columns: 1fr;
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 240px;
+  }
+  .gallery-item--wide,
+  .gallery-item--tall {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
   .public-footer__grid {
     grid-template-columns: 1fr;
-    gap: var(--space-8);
+    gap: 2.5rem;
   }
-
   .public-footer__bottom {
     flex-direction: column;
     text-align: center;
   }
-
-  .admin-body {
-    padding: var(--space-4);
-  }
-
-  .admin-topbar {
-    padding: var(--space-4);
-  }
 }
 
-/* Mobile */
-@media (max-width: 640px) {
-  h1 { font-size: var(--text-2xl); }
-  h2 { font-size: var(--text-xl); }
-
-  .hero {
-    min-height: 70vh;
+/* 480px & Below Mobile */
+@media (max-width: 480px) {
+  .hero__badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.8rem;
   }
-
-  .auth-card {
-    padding: var(--space-6);
+  .hero__title {
+    font-size: 2.2rem;
   }
-
-  .btn--xl {
-    padding: var(--space-4) var(--space-6);
-    font-size: var(--text-base);
+  .welcome-media__badge {
+    position: static;
+    margin-top: 1rem;
   }
-
-  .card__body {
-    padding: var(--space-4);
+  .exp-card {
+    min-height: 360px;
+    padding: 1.5rem;
   }
-}
-
-/* Print */
-@media print {
-  .public-nav,
-  .admin-sidebar,
-  .admin-topbar,
-  .public-footer {
-    display: none;
-  }
-
-  .admin-main,
-  .page-content {
-    margin: 0;
-    padding: 0;
+  .final-cta-section {
+    padding-block: 4.5rem;
   }
 }
