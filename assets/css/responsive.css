@@ -442,3 +442,25 @@
     padding: 1rem 1.25rem;
   }
 }
+
+/* About Page Responsiveness */
+@media (max-width: 1024px) {
+  .about-story-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .about-values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .about-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-values-grid,
+  .about-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
