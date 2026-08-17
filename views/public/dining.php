@@ -17,53 +17,23 @@ partial('partials/public_header', [
 <main id="main-content" role="main">
 
   <!-- ════════════════════════════════════════════════════════════
-       SECTION 01 — CINEMATIC DINING HERO
+       PAGE HEADER — DINING & SPECIAL MENU
   ════════════════════════════════════════════════════════════ -->
-  <section class="hero hero--dining" aria-label="Dining &amp; Culinary Header">
+  <header class="page-header page-header--has-bg">
     <img src="<?= asset('images/experiences/dining.jpg') ?>"
-         alt="GT HOMES Resort Dining Setup and Sri Lankan Flavours"
-         class="hero__bg-img"
+         alt="GT HOMES Dining &amp; Menu"
+         class="page-header__bg-img"
          loading="eager">
-    <div class="hero__overlay"></div>
+    <div class="page-header__overlay"></div>
 
-    <div class="hero__container">
-      <div class="hero__content">
-        <div class="hero__badge">
-          <i class="fa-solid fa-utensils" aria-hidden="true"></i> DINING AT GT HOMES
-        </div>
-        <h1 class="hero__title">
-          Flavours Made <span>for Your Stay</span>
-        </h1>
-        <p class="hero__subtitle">
-          Enjoy comforting favourites, authentic Sri Lankan flavours and specially prepared meals designed to make your GT HOMES experience even more memorable.
-        </p>
-        <div class="hero__actions">
-          <a href="#main-menu-section" class="btn btn--accent btn--lg">
-            <i class="fa-solid fa-utensils" aria-hidden="true"></i>
-            Explore the Menu
-          </a>
-          <a href="#special-dining-section" class="btn btn--glass btn--lg">
-            <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
-            Ask About Dining
-          </a>
-        </div>
-        <div class="hero__indicators">
-          <div class="hero__indicator-item">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <span>Freshly Prepared</span>
-          </div>
-          <div class="hero__indicator-item">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <span>Sri Lankan Flavours</span>
-          </div>
-          <div class="hero__indicator-item">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <span>Special Dining Experiences</span>
-          </div>
-        </div>
-      </div>
+    <div class="container page-header__container">
+      <span class="eyebrow eyebrow--light">DINING AT GT HOMES</span>
+      <h1 class="page-header__title page-header__title--light">Flavours Made for Your Stay</h1>
+      <p class="page-header__desc page-header__desc--light">
+        Enjoy comforting favourites, authentic Sri Lankan flavours and specially prepared meals designed to make your GT HOMES experience even more memorable.
+      </p>
     </div>
-  </section>
+  </header>
 
   <!-- ════════════════════════════════════════════════════════════
        SECTION 02 — DINING INTRODUCTION

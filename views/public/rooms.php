@@ -17,53 +17,23 @@ partial('partials/public_header', [
 <main id="main-content" role="main">
 
   <!-- ════════════════════════════════════════════════════════════
-       SECTION 02 — CINEMATIC ROOMS HERO
+       PAGE HEADER — ROOMS & ACCOMMODATION
   ════════════════════════════════════════════════════════════ -->
-  <section class="hero hero--rooms" aria-label="Rooms &amp; Accommodation Header">
+  <header class="page-header page-header--has-bg">
     <img src="<?= asset('images/home/hero.jpg') ?>"
-         alt="GT HOMES Resort Twilight Atmosphere &amp; Rooms"
-         class="hero__bg-img"
+         alt="GT HOMES Rooms &amp; Accommodation"
+         class="page-header__bg-img"
          loading="eager">
-    <div class="hero__overlay"></div>
+    <div class="page-header__overlay"></div>
 
-    <div class="hero__container">
-      <div class="hero__content">
-        <div class="hero__badge">
-          <i class="fa-solid fa-gem" aria-hidden="true"></i> ROOMS &amp; ACCOMMODATION
-        </div>
-        <h1 class="hero__title">
-          Find Your Perfect Space <span>to Stay</span>
-        </h1>
-        <p class="hero__subtitle">
-          From peaceful couple stays to comfortable family getaways, discover thoughtfully prepared rooms designed for rest, privacy and memorable moments at GT HOMES.
-        </p>
-        <div class="hero__actions">
-          <a href="#main-rooms-collection" class="btn btn--accent btn--lg">
-            <i class="fa-solid fa-bed" aria-hidden="true"></i>
-            Explore Rooms
-          </a>
-          <a href="#rooms-availability-search" class="btn btn--glass btn--lg">
-            <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
-            Check Availability
-          </a>
-        </div>
-        <div class="hero__indicators">
-          <div class="hero__indicator-item">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <span>5 Distinctive Rooms</span>
-          </div>
-          <div class="hero__indicator-item">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <span>Comfortable Stays</span>
-          </div>
-          <div class="hero__indicator-item">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <span>Warm Hospitality</span>
-          </div>
-        </div>
-      </div>
+    <div class="container page-header__container">
+      <span class="eyebrow eyebrow--light">ROOMS &amp; ACCOMMODATION</span>
+      <h1 class="page-header__title page-header__title--light">Find Your Perfect Space to Stay</h1>
+      <p class="page-header__desc page-header__desc--light">
+        From peaceful couple stays to comfortable family getaways, discover thoughtfully prepared rooms designed for rest, privacy and memorable moments at GT HOMES.
+      </p>
     </div>
-  </section>
+  </header>
 
   <!-- ════════════════════════════════════════════════════════════
        SECTION 03 — FLOATING AVAILABILITY PANEL
