@@ -184,4 +184,38 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }());
 
+  // 7. Dining Menu Category Navigation Interactivity
+  (function initMenuCategoryFilter() {
+    const categoryBtns = document.querySelectorAll('.menu-category-btn');
+    const menuBlocks   = document.querySelectorAll('[data-menu-block]');
+
+    if (!categoryBtns.length || !menuBlocks.length) return;
+
+    categoryBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const filter = this.getAttribute('data-menu-filter');
+
+        // Active State Toggle
+        categoryBtns.forEach(function (b) {
+          b.classList.remove('menu-category-btn--active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        this.classList.add('menu-category-btn--active');
+        this.setAttribute('aria-selected', 'true');
+
+        // Filter Blocks Display
+        menuBlocks.forEach(function (block) {
+          const blockKey = block.getAttribute('data-menu-block');
+          if (filter === 'all' || filter === blockKey) {
+            block.style.display = 'block';
+            block.style.opacity = '1';
+          } else {
+            block.style.display = 'none';
+            block.style.opacity = '0';
+          }
+        });
+      });
+    });
+  }());
+
 });

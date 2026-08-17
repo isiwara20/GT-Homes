@@ -278,3 +278,59 @@
     width: 100%;
   }
 }
+
+/* Dining Page Responsiveness */
+@media (max-width: 1024px) {
+  .dining-intro__grid,
+  .dining-feature-box,
+  .sri-lankan-box {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .menu-items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero--dining {
+    min-height: 55vh;
+    padding-top: calc(76px + 3.5rem);
+  }
+  .dining-intro__benefits {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .menu-items-grid {
+    grid-template-columns: 1fr;
+  }
+  .dining-feature-box {
+    padding: 1.75rem;
+  }
+  .menu-category-block {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-category-nav {
+    gap: 0.5rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .menu-category-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .special-dining-box__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .special-dining-box__actions .btn {
+    width: 100%;
+  }
+}
