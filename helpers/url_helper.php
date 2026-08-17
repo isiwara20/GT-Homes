@@ -30,7 +30,14 @@ function url(string $path = ''): string
  */
 function asset(string $path): string
 {
-    return rtrim(ASSETS_URL, '/') . '/' . ltrim($path, '/');
+    $url = rtrim(ASSETS_URL, '/') . '/' . ltrim($path, '/');
+    if (defined('ASSETS_PATH')) {
+        $filePath = ASSETS_PATH . '/' . ltrim($path, '/');
+        if (file_exists($filePath)) {
+            $url .= '?v=' . filemtime($filePath);
+        }
+    }
+    return $url;
 }
 
 /**

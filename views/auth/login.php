@@ -39,7 +39,7 @@ set_security_headers();
 
     <!-- Logo -->
     <div class="auth-card__logo">
-      <img src="<?= asset('images/branding/logo.png') ?>"
+      <img src="<?= asset('images/branding/Logo.png') ?>"
            alt="GT HOMES Logo"
            onerror="this.style.display='none'">
       <h1 class="auth-card__title">GT HOMES</h1>

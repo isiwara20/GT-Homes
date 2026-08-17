@@ -6,27 +6,41 @@
 /* ──────────────────────────────────────
    Buttons
 ────────────────────────────────────── */
+/* ──────────────────────────────────────
+   Buttons — Nicely Text Aligned & Proportionate Padding
+────────────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-6);
+  gap: 0.6rem;
+  padding: 0.75rem 1.6rem;
   font-family: var(--font-sans);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-wide);
-  border-radius: var(--radius-md);
+  font-size: var(--text-sm, 0.925rem);
+  font-weight: var(--weight-semibold, 600);
+  line-height: 1.25;
+  letter-spacing: var(--tracking-wide, 0.02em);
+  text-align: center;
+  border-radius: var(--radius-md, 12px);
   transition: all var(--transition-base);
   cursor: pointer;
   border: 2px solid transparent;
   white-space: nowrap;
   text-decoration: none;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.btn i {
+  font-size: 1em;
+  line-height: 1;
+  flex-shrink: 0;
+  display: inline-block;
 }
 
 .btn:focus-visible {
   outline: 2px solid var(--color-brand-lovi);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
 /* Primary — Lovi Maroon */
@@ -34,14 +48,15 @@
   background: var(--color-brand-lovi);
   color: var(--color-white);
   border-color: var(--color-brand-lovi);
+  box-shadow: 0 4px 14px rgba(122, 24, 56, 0.22);
 }
 
 .btn--primary:hover {
   background: var(--color-brand-lovi-dark);
   border-color: var(--color-brand-lovi-dark);
   color: var(--color-white);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(116, 27, 56, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(122, 24, 56, 0.35);
 }
 
 /* Secondary — Outline */
@@ -52,8 +67,9 @@
 }
 
 .btn--secondary:hover {
-  background: var(--color-brand-lovi-pale);
+  background: var(--color-brand-lovi-pale, rgba(122, 24, 56, 0.08));
   color: var(--color-brand-lovi-dark);
+  transform: translateY(-2px);
 }
 
 /* Gold / Yellow Accent */
@@ -61,13 +77,15 @@
   background: var(--color-brand-yellow);
   color: var(--color-charcoal);
   border-color: var(--color-brand-yellow);
+  box-shadow: 0 4px 14px rgba(246, 221, 99, 0.3);
 }
 
 .btn--accent:hover {
-  background: var(--color-brand-yellow-dark);
-  border-color: var(--color-brand-yellow-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(247, 223, 103, 0.4);
+  background: var(--color-brand-yellow-dark, #E0C735);
+  border-color: var(--color-brand-yellow-dark, #E0C735);
+  color: var(--color-charcoal);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(246, 221, 99, 0.45);
 }
 
 /* WhatsApp CTA */
@@ -75,18 +93,44 @@
   background: #25D366;
   color: var(--color-white);
   border-color: #25D366;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
 }
 
 .btn--whatsapp:hover {
   background: #128C7E;
   border-color: #128C7E;
   color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(18, 140, 126, 0.35);
 }
 
 /* Sizes */
-.btn--sm { padding: var(--space-2) var(--space-4); font-size: var(--text-xs); }
-.btn--lg { padding: var(--space-4) var(--space-8); font-size: var(--text-base); }
-.btn--xl { padding: var(--space-5) var(--space-10); font-size: var(--text-md); letter-spacing: var(--tracking-wider); }
+.btn--sm {
+  padding: 0.5rem 1.15rem;
+  font-size: var(--text-xs, 0.8rem);
+  border-radius: var(--radius-sm, 8px);
+}
+
+.btn--md {
+  padding: 0.75rem 1.6rem;
+  font-size: var(--text-sm, 0.925rem);
+  border-radius: var(--radius-md, 12px);
+}
+
+.btn--lg {
+  padding: 0.95rem 2.2rem;
+  font-size: var(--text-base, 1rem);
+  font-weight: 600;
+  border-radius: var(--radius-md, 12px);
+}
+
+.btn--xl {
+  padding: 1.15rem 2.8rem;
+  font-size: var(--text-md, 1.125rem);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wider, 0.04em);
+  border-radius: var(--radius-lg, 16px);
+}
 
 /* ──────────────────────────────────────
    Cards

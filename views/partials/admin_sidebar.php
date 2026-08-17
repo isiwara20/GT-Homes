@@ -17,7 +17,7 @@ $currentPath = current_path();
   <!-- Sidebar Header -->
   <div class="admin-sidebar__header">
     <div class="admin-sidebar__logo">
-      <img src="<?= asset('images/branding/logo.png') ?>"
+      <img src="<?= asset('images/branding/Logo.png') ?>"
            alt="GT HOMES Logo"
            class="admin-sidebar__logo-img"
            onerror="this.style.display='none'">

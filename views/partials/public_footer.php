@@ -12,8 +12,8 @@
 
       <!-- Column 1: Brand & Logo -->
       <div class="public-footer__brand">
-        <a href="<?= url() ?>" class="public-nav__logo-wrapper" aria-label="GT HOMES Holiday Resort">
-          <img src="<?= asset('images/branding/Logo.jpeg') ?>" alt="GT HOMES Logo" class="public-nav__logo-img">
+        <a href="<?= url() ?>" class="public-footer__logo-wrapper" aria-label="GT HOMES Holiday Resort">
+          <img src="<?= asset('images/branding/Logo.png') ?>" alt="GT HOMES Logo" class="public-footer__logo-img">
         </a>
         <p>A peaceful holiday escape created for comfortable stays, delicious food, private entertainment and beautiful memories in Sri Lanka.</p>
 

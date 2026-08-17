@@ -34,7 +34,7 @@ set_security_headers();
   <meta property="og:image"       content="<?= asset('images/home/hero.jpg') ?>">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="<?= asset('images/branding/Logo.jpeg') ?>">
+  <link rel="icon" type="image/png" href="<?= asset('images/branding/Logo.png') ?>">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,7 +60,7 @@ set_security_headers();
 
     <!-- Official Logo with preserved Yellow Background -->
     <a href="<?= url() ?>" class="public-nav__logo-wrapper" aria-label="GT HOMES Holiday Resort — Home">
-      <img src="<?= asset('images/branding/Logo.jpeg') ?>"
+      <img src="<?= asset('images/branding/Logo.png') ?>"
            alt="GT HOMES Holiday Resort Logo"
            class="public-nav__logo-img">
     </a>
@@ -102,7 +102,7 @@ set_security_headers();
 <div id="nav-mobile-drawer" class="public-nav__mobile-drawer" role="dialog" aria-label="Mobile navigation">
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
     <a href="<?= url() ?>" class="public-nav__logo-wrapper">
-      <img src="<?= asset('images/branding/Logo.jpeg') ?>" alt="GT HOMES Logo" class="public-nav__logo-img">
+      <img src="<?= asset('images/branding/Logo.png') ?>" alt="GT HOMES Logo" class="public-nav__logo-img">
     </a>
     <button id="nav-drawer-close" aria-label="Close menu" style="background:none; border:none; font-size:1.5rem; color:var(--charcoal); cursor:pointer;">
       <i class="fa-solid fa-xmark"></i>

@@ -105,7 +105,7 @@ partial('partials/public_header', [
         </div>
 
         <div>
-          <button type="submit" class="btn btn--primary btn--lg" style="width: 100%; height: 46px;">
+          <button type="submit" class="btn btn--primary btn--lg" style="width: 100%;">
             <i class="fa-solid fa-magnifying-glass"></i> Check Availability
           </button>
         </div>

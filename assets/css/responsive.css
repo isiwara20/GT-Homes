@@ -72,6 +72,17 @@
 
 /* 768px Tablet Portrait & Mobile */
 @media (max-width: 768px) {
+  .public-nav__inner > .public-nav__logo-wrapper {
+    top: 6px;
+    left: 1rem;
+    width: 130px;
+    height: 88px;
+    padding: 6px 8px;
+    border-radius: 10px;
+  }
+  .public-nav__inner > .public-nav__logo-wrapper .public-nav__logo-img {
+    max-height: 74px;
+  }
   .public-nav__links,
   .public-nav__cta {
     display: none;
@@ -81,7 +92,7 @@
   }
   .hero {
     min-height: 75vh;
-    padding-top: calc(var(--nav-height) + 1.5rem);
+    padding-top: calc(76px + 3.5rem);
     padding-bottom: 4rem;
   }
   .hero__actions {
@@ -144,6 +155,17 @@
 
 /* 480px & Below Mobile */
 @media (max-width: 480px) {
+  .public-nav__inner > .public-nav__logo-wrapper {
+    top: 6px;
+    left: 0.75rem;
+    width: 110px;
+    height: 76px;
+    padding: 4px 6px;
+    border-radius: 8px;
+  }
+  .public-nav__inner > .public-nav__logo-wrapper .public-nav__logo-img {
+    max-height: 64px;
+  }
   .hero__badge {
     font-size: 0.7rem;
     padding: 0.3rem 0.8rem;
