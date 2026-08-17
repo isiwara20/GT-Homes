@@ -464,3 +464,27 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Contact Page Responsiveness */
+@media (max-width: 1024px) {
+  .contact-channels-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact-main-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-channels-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .contact-form-card {
+    padding: 1.5rem;
+  }
+}

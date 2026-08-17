@@ -15,8 +15,8 @@ class ContactController extends BaseController
     public function index(): array
     {
         return [
-            'pageTitle'       => 'Contact Us — ' . APP_NAME,
-            'metaDescription' => 'Get in touch with GT HOMES Holiday Resort.',
+            'pageTitle'       => 'Contact Us | ' . APP_NAME,
+            'metaDescription' => 'Get in touch with GT HOMES Holiday Resort (Pvt) Ltd for room availability, mini cinema bookings, dining inquiries, and special celebrations.',
             'csrfToken'       => CsrfService::generateToken(),
         ];
     }
