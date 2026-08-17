@@ -185,3 +185,96 @@
     padding-block: 4.5rem;
   }
 }
+
+/* Rooms Page Responsiveness */
+@media (max-width: 1024px) {
+  .rooms-intro__grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .room-showcase,
+  .room-showcase--reverse {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.75rem;
+  }
+  .room-showcase--reverse .room-showcase__media {
+    order: 1;
+  }
+  .room-showcase--reverse .room-showcase__content {
+    order: 2;
+  }
+  .amenities-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cross-sell-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero--rooms {
+    min-height: 55vh;
+    padding-top: calc(76px + 3.5rem);
+  }
+  .rooms-intro__benefits {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .room-showcase__meta-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .room-showcase__title {
+    font-size: 1.85rem;
+  }
+  .amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .process-steps {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .process-step__arrow {
+    transform: rotate(90deg);
+  }
+  .cross-sell-grid {
+    grid-template-columns: 1fr;
+  }
+  .compare-cta-box {
+    flex-direction: column;
+    text-align: center;
+  }
+  .compare-cta-box .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .room-showcase {
+    padding: 1.25rem;
+  }
+  .room-filter {
+    gap: 0.5rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .room-filter__btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .amenities-grid {
+    grid-template-columns: 1fr;
+  }
+  .room-showcase__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .room-showcase__actions .btn {
+    width: 100%;
+  }
+}

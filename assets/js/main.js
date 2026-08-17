@@ -116,4 +116,72 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }());
 
+  // 5. Room Filter Navigation Interactivity
+  (function initRoomFilter() {
+    const filterBtns = document.querySelectorAll('.room-filter__btn');
+    const roomItems  = document.querySelectorAll('[data-room-item]');
+
+    if (!filterBtns.length || !roomItems.length) return;
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const filter = this.getAttribute('data-filter');
+
+        // Toggle Active Button State
+        filterBtns.forEach(function (b) {
+          b.classList.remove('room-filter__btn--active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        this.classList.add('room-filter__btn--active');
+        this.setAttribute('aria-selected', 'true');
+
+        // Filter Rooms Collection
+        roomItems.forEach(function (item) {
+          const itemKey = item.getAttribute('data-room-item');
+          if (filter === 'all' || filter === itemKey) {
+            item.style.display = 'grid';
+            item.style.opacity = '1';
+          } else {
+            item.style.display = 'none';
+            item.style.opacity = '0';
+          }
+        });
+      });
+    });
+  }());
+
+  // 6. Rooms Page Booking Search Form
+  (function initRoomsBookingForm() {
+    const form = document.getElementById('rooms-booking-form');
+    if (!form) return;
+
+    const checkinInput  = form.querySelector('input[name="check_in"]');
+    const checkoutInput = form.querySelector('input[name="check_out"]');
+
+    if (checkinInput && !checkinInput.value) {
+      const today = new Date();
+      checkinInput.value = today.toISOString().split('T')[0];
+      checkinInput.min = checkinInput.value;
+    }
+
+    if (checkoutInput && !checkoutInput.value && checkinInput) {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      checkoutInput.value = tomorrow.toISOString().split('T')[0];
+      checkoutInput.min = checkinInput.value;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const room = form.querySelector('select[name="room"]')?.value || 'any';
+      const checkIn = checkinInput?.value || '';
+      const checkOut = checkoutInput?.value || '';
+      const guests = form.querySelector('select[name="guests"]')?.value || '2';
+
+      const msg = `Hello GT HOMES! I am on the Rooms page and would like to check availability for:\n- Preferred Room: ${room.toUpperCase()}\n- Check-in: ${checkIn}\n- Check-out: ${checkOut}\n- Guests: ${guests}`;
+      const waUrl = `https://wa.me/94777872280?text=${encodeURIComponent(msg)}`;
+      window.open(waUrl, '_blank');
+    });
+  }());
+
 });

@@ -21,11 +21,11 @@ class RoomController extends BaseController
      */
     public function index(): array
     {
-        // Future: $rooms = $this->roomBll->getActiveRooms();
+        $rooms = $this->roomBll->getActiveRooms();
         return [
-            'pageTitle'       => 'Rooms & Suites — ' . APP_NAME,
-            'metaDescription' => 'Explore our premium rooms and suites at GT HOMES Holiday Resort.',
-            'rooms'           => [],   // populated in later steps
+            'pageTitle'       => 'Rooms & Accommodation — ' . APP_NAME,
+            'metaDescription' => 'Explore our 5 distinctive rooms at GT HOMES Holiday Resort — Orchid, Dahiliya, Lotus, Daffodil, and Rose. Find your perfect space for rest, privacy, and comfort in Sri Lanka.',
+            'rooms'           => $rooms,
         ];
     }
 
