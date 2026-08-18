@@ -31,9 +31,18 @@ DirectoryIndex index.php
     RewriteRule ^logout/?$         logout.php [L,QSA]
 
     # ────────────────────────────────────
-    # Admin Panel
+    # Admin Panel Routes
     # ────────────────────────────────────
-    RewriteRule ^admin/?$          admin_dashboard.php [L,QSA]
+    RewriteRule ^admin/?$               admin_dashboard.php [L,QSA]
+    RewriteRule ^admin/dashboard/?$     admin_dashboard.php [L,QSA]
+    RewriteRule ^admin/bookings/?$      admin_bookings.php [L,QSA]
+    RewriteRule ^admin/rooms/?$         admin_rooms.php [L,QSA]
+    RewriteRule ^admin/dining/?$        admin_dining.php [L,QSA]
+    RewriteRule ^admin/dining/(.*)/?$   admin_dining.php [L,QSA]
+    RewriteRule ^admin/gallery/?$       admin_gallery.php [L,QSA]
+    RewriteRule ^admin/gallery/(.*)/?$  admin_gallery.php [L,QSA]
+    RewriteRule ^admin/contacts/?$      admin_contacts.php [L,QSA]
+    RewriteRule ^admin/settings/?$      admin_settings.php [L,QSA]
 
     # ────────────────────────────────────
     # Public Pages

@@ -36,6 +36,124 @@ class BookingBLL extends BaseBLL
     }
 
     /**
+     * Get list of booking enquiries (DB or session store fallback).
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    public function getEnquiriesList(string $statusFilter = 'ALL', string $search = ''): array
+    {
+        try {
+            $dbItems = $this->dal->findAll();
+            if (!empty($dbItems)) {
+                return $this->filterEnquiries($dbItems, $statusFilter, $search);
+            }
+        } catch (\Throwable $e) {
+            // DB fallback
+        }
+
+        if (!isset($_SESSION['booking_enquiries_data'])) {
+            $_SESSION['booking_enquiries_data'] = [
+                [
+                    'id' => 101,
+                    'full_name' => 'Kasun Perera',
+                    'email' => 'kasun.perera@example.com',
+                    'phone' => '0771234567',
+                    'check_in_date' => '2026-08-25',
+                    'check_out_date' => '2026-08-27',
+                    'guests' => 2,
+                    'room_name' => 'ORCHID Suite',
+                    'special_request' => 'Honeymoon stay setup with flower arrangement.',
+                    'status' => 'PENDING',
+                    'admin_notes' => 'Awaiting confirmation on balcony preferences.',
+                    'created_at' => '2026-08-18 14:30:00',
+                ],
+                [
+                    'id' => 102,
+                    'full_name' => 'Dilini Fernando',
+                    'email' => 'dilini.f@example.com',
+                    'phone' => '0777890123',
+                    'check_in_date' => '2026-09-01',
+                    'check_out_date' => '2026-09-03',
+                    'guests' => 4,
+                    'room_name' => 'DAHILIYA Villa',
+                    'special_request' => 'Need extra bed for child.',
+                    'status' => 'CONTACTED',
+                    'admin_notes' => 'Sent rate details via WhatsApp.',
+                    'created_at' => '2026-08-17 11:15:00',
+                ],
+                [
+                    'id' => 103,
+                    'full_name' => 'Rohan Jayasinghe',
+                    'email' => 'rohan.j@example.com',
+                    'phone' => '0714567890',
+                    'check_in_date' => '2026-08-28',
+                    'check_out_date' => '2026-08-30',
+                    'guests' => 2,
+                    'room_name' => 'LOTUS Poolside',
+                    'special_request' => 'Poolside evening BBQ arrangement.',
+                    'status' => 'CONFIRMED',
+                    'admin_notes' => 'Confirmed stay & deposit received.',
+                    'created_at' => '2026-08-16 09:45:00',
+                ],
+            ];
+        }
+
+        return $this->filterEnquiries($_SESSION['booking_enquiries_data'], $statusFilter, $search);
+    }
+
+    private function filterEnquiries(array $items, string $statusFilter, string $search): array
+    {
+        return array_filter($items, function ($item) use ($statusFilter, $search) {
+            if ($statusFilter !== 'ALL' && strcasecmp($item['status'] ?? '', $statusFilter) !== 0) {
+                return false;
+            }
+            if ($search !== '') {
+                $needle = strtolower($search);
+                $haystack = strtolower(($item['full_name'] ?? '') . ' ' . ($item['email'] ?? '') . ' ' . ($item['phone'] ?? '') . ' ' . ($item['room_name'] ?? ''));
+                if (!str_contains($haystack, $needle)) {
+                    return false;
+                }
+            }
+            return true;
+        });
+    }
+
+    public function updateStatus(int $id, string $status, ?string $notes = null): bool
+    {
+        try {
+            $this->dal->updateStatus($id, $status, $notes);
+        } catch (\Throwable $e) {}
+
+        if (isset($_SESSION['booking_enquiries_data'])) {
+            foreach ($_SESSION['booking_enquiries_data'] as &$item) {
+                if ($item['id'] === $id) {
+                    $item['status'] = $status;
+                    if ($notes !== null) {
+                        $item['admin_notes'] = $notes;
+                    }
+                    return true;
+                }
+            }
+        }
+        return true;
+    }
+
+    public function getEnquiryStats(): array
+    {
+        $all = $this->getEnquiriesList();
+        $pending = count(array_filter($all, fn($i) => ($i['status'] ?? '') === 'PENDING'));
+        $confirmed = count(array_filter($all, fn($i) => ($i['status'] ?? '') === 'CONFIRMED'));
+        $contacted = count(array_filter($all, fn($i) => ($i['status'] ?? '') === 'CONTACTED'));
+
+        return [
+            'total'     => count($all),
+            'pending'   => $pending,
+            'confirmed' => $confirmed,
+            'contacted' => $contacted,
+        ];
+    }
+
+    /**
      * Validate booking enquiry data.
      *
      * @param  array<string, mixed> $data

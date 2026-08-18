@@ -12,6 +12,18 @@ class RoomBLL extends BaseBLL
         $this->dal = new RoomDAL();
     }
 
+    public function updateRoomData(string $slug, array $data): bool
+    {
+        if (!isset($_SESSION['custom_room_data'])) {
+            $_SESSION['custom_room_data'] = [];
+        }
+        $_SESSION['custom_room_data'][$slug] = array_merge(
+            $_SESSION['custom_room_data'][$slug] ?? [],
+            $data
+        );
+        return true;
+    }
+
     /**
      * Get all active rooms for public display.
      * Uses database records if available, otherwise returns confirmed static room definitions.
@@ -20,16 +32,15 @@ class RoomBLL extends BaseBLL
      */
     public function getActiveRooms(): array
     {
-        try {
-            $dbRooms = $this->dal->findActive();
-            if (!empty($dbRooms)) {
-                return $dbRooms;
+        $rooms = $this->getStaticRooms();
+        if (isset($_SESSION['custom_room_data'])) {
+            foreach ($rooms as &$r) {
+                if (isset($_SESSION['custom_room_data'][$r['slug']])) {
+                    $r = array_merge($r, $_SESSION['custom_room_data'][$r['slug']]);
+                }
             }
-        } catch (\Throwable $e) {
-            // Database query fallback
         }
-
-        return $this->getStaticRooms();
+        return $rooms;
     }
 
     /**

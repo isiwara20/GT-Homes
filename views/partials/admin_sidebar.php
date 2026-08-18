@@ -32,7 +32,7 @@ $currentPath = current_path();
     <!-- Dashboard -->
     <div class="admin-nav__group">
       <a href="<?= url('admin') ?>"
-         class="admin-nav__item <?= str_ends_with($currentPath, '/admin') || str_ends_with($currentPath, '/admin_dashboard.php') ? 'admin-nav__item--active' : '' ?>"
+         class="admin-nav__item <?= str_contains($currentPath, 'admin_dashboard') || str_ends_with(rtrim($currentPath, '/'), '/admin') ? 'admin-nav__item--active' : '' ?>"
          id="sidebar-dashboard">
         <i class="fa-solid fa-gauge-high" aria-hidden="true"></i>
         Dashboard
@@ -41,78 +41,38 @@ $currentPath = current_path();
 
     <!-- Accommodation -->
     <div class="admin-nav__group">
-      <p class="admin-nav__group-label">Accommodation</p>
-      <a href="<?= url('admin/rooms') ?>" class="admin-nav__item" id="sidebar-rooms">
+      <p class="admin-nav__group-label">Resort Management</p>
+      <a href="<?= url('admin/rooms') ?>" class="admin-nav__item <?= str_contains($currentPath, 'admin_rooms') || str_contains($currentPath, 'admin/rooms') ? 'admin-nav__item--active' : '' ?>" id="sidebar-rooms">
         <i class="fa-solid fa-bed" aria-hidden="true"></i>
-        Rooms
+        Rooms &amp; Suites
       </a>
-      <a href="<?= url('admin/availability') ?>" class="admin-nav__item" id="sidebar-availability">
-        <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
-        Availability
-      </a>
-    </div>
-
-    <!-- Packages -->
-    <div class="admin-nav__group">
-      <p class="admin-nav__group-label">Packages</p>
-      <a href="<?= url('admin/packages') ?>" class="admin-nav__item" id="sidebar-packages">
-        <i class="fa-solid fa-box" aria-hidden="true"></i>
-        Packages
-      </a>
-    </div>
-
-    <!-- Dining -->
-    <div class="admin-nav__group">
-      <p class="admin-nav__group-label">Dining</p>
-      <a href="<?= url('admin/dining/categories') ?>" class="admin-nav__item" id="sidebar-dining-cats">
+      <a href="<?= url('admin/dining') ?>" class="admin-nav__item <?= str_contains($currentPath, 'admin_dining') || str_contains($currentPath, 'admin/dining') ? 'admin-nav__item--active' : '' ?>" id="sidebar-dining">
         <i class="fa-solid fa-utensils" aria-hidden="true"></i>
-        Categories
+        Dining &amp; Menus
       </a>
-      <a href="<?= url('admin/dining/items') ?>" class="admin-nav__item" id="sidebar-dining-items">
-        <i class="fa-solid fa-burger" aria-hidden="true"></i>
-        Menu Items
-      </a>
-    </div>
-
-    <!-- Experiences -->
-    <div class="admin-nav__group">
-      <p class="admin-nav__group-label">Experiences</p>
-      <a href="<?= url('admin/experiences') ?>" class="admin-nav__item" id="sidebar-experiences">
-        <i class="fa-solid fa-star" aria-hidden="true"></i>
-        Experiences
-      </a>
-    </div>
-
-    <!-- Gallery -->
-    <div class="admin-nav__group">
-      <p class="admin-nav__group-label">Gallery</p>
-      <a href="<?= url('admin/gallery/memories') ?>" class="admin-nav__item" id="sidebar-memories">
+      <a href="<?= url('admin/gallery') ?>" class="admin-nav__item <?= str_contains($currentPath, 'admin_gallery') || str_contains($currentPath, 'admin/gallery') ? 'admin-nav__item--active' : '' ?>" id="sidebar-gallery">
         <i class="fa-solid fa-images" aria-hidden="true"></i>
-        Memories
-      </a>
-      <a href="<?= url('admin/gallery/special') ?>" class="admin-nav__item" id="sidebar-special">
-        <i class="fa-solid fa-heart" aria-hidden="true"></i>
-        Special Memories
+        Gallery &amp; Memories
       </a>
     </div>
 
     <!-- Enquiries -->
     <div class="admin-nav__group">
-      <p class="admin-nav__group-label">Enquiries</p>
-      <a href="<?= url('admin/bookings') ?>" class="admin-nav__item" id="sidebar-bookings">
+      <p class="admin-nav__group-label">Guest Communications</p>
+      <a href="<?= url('admin/bookings') ?>" class="admin-nav__item <?= str_contains($currentPath, 'admin_bookings') || str_contains($currentPath, 'admin/bookings') ? 'admin-nav__item--active' : '' ?>" id="sidebar-bookings">
         <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
         Booking Enquiries
       </a>
-      <a href="<?= url('admin/contacts') ?>" class="admin-nav__item" id="sidebar-contacts">
+      <a href="<?= url('admin/contacts') ?>" class="admin-nav__item <?= str_contains($currentPath, 'admin_contacts') || str_contains($currentPath, 'admin/contacts') ? 'admin-nav__item--active' : '' ?>" id="sidebar-contacts">
         <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-        Contact Enquiries
+        Contact Inbox
       </a>
     </div>
 
     <!-- Settings -->
     <div class="admin-nav__group">
       <p class="admin-nav__group-label">System</p>
-      <a href="<?= url('admin/settings') ?>" class="admin-nav__item" id="sidebar-settings">
+      <a href="<?= url('admin/settings') ?>" class="admin-nav__item <?= str_contains($currentPath, 'admin_settings') || str_contains($currentPath, 'admin/settings') ? 'admin-nav__item--active' : '' ?>" id="sidebar-settings">
         <i class="fa-solid fa-gear" aria-hidden="true"></i>
         Website Settings
       </a>

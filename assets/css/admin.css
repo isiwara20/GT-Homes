@@ -3,22 +3,30 @@
    File: assets/css/admin.css
    ============================================================ */
 
+:root {
+  --admin-sidebar: 270px;
+}
+
 /* ──────────────────────────────────────
    Admin Layout Shell
 ────────────────────────────────────── */
 .admin-shell {
   display: flex;
   min-height: 100vh;
+  width: 100%;
   background: #0F0A14;
   font-family: var(--font-body);
   color: #E5E5E5;
+  position: relative;
 }
 
 /* ──────────────────────────────────────
    Sidebar
 ────────────────────────────────────── */
 .admin-sidebar {
-  width: var(--admin-sidebar);
+  width: 270px;
+  min-width: 270px;
+  max-width: 270px;
   background: #180D20;
   border-right: 1px solid rgba(116, 27, 56, 0.3);
   display: flex;
@@ -26,10 +34,12 @@
   position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
   height: 100vh;
   overflow-y: auto;
-  z-index: var(--z-nav);
+  z-index: 1000;
   transition: transform var(--transition-base);
+  box-shadow: 4px 0 15px rgba(0,0,0,0.3);
 }
 
 .admin-sidebar__header {
@@ -159,11 +169,15 @@
    Admin Main Content
 ────────────────────────────────────── */
 .admin-main {
-  margin-left: var(--admin-sidebar);
+  margin-left: 270px;
+  width: calc(100% - 270px);
+  min-width: 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background: #0F0A14;
+  box-sizing: border-box;
 }
 
 /* ──────────────────────────────────────
@@ -262,4 +276,20 @@
 
 .admin-table tr:hover td {
   background: rgba(116, 27, 56, 0.08);
+}
+
+@media (max-width: 991px) {
+  .admin-sidebar {
+    transform: translateX(-100%);
+  }
+  .admin-sidebar.is-open {
+    transform: translateX(0);
+  }
+  .admin-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  #admin-sidebar-toggle {
+    display: inline-block !important;
+  }
 }

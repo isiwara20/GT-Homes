@@ -4,8 +4,6 @@
  * File: views/partials/admin_footer.php
  */
 ?>
-    </main><!-- /.admin-body -->
-  </div><!-- /.admin-main -->
 </div><!-- /.admin-shell -->
 
 <script src="<?= asset('js/admin.js') ?>"></script>

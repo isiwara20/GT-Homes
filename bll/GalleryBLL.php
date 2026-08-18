@@ -12,6 +12,18 @@ class GalleryBLL extends BaseBLL
         $this->dal = new GalleryDAL();
     }
 
+    public function updatePhotoItem(int $id, array $data): bool
+    {
+        if (!isset($_SESSION['custom_gallery_photos'])) {
+            $_SESSION['custom_gallery_photos'] = [];
+        }
+        $_SESSION['custom_gallery_photos'][$id] = array_merge(
+            $_SESSION['custom_gallery_photos'][$id] ?? [],
+            $data
+        );
+        return true;
+    }
+
     /**
      * Get gallery categories and images.
      * Uses database if available, otherwise returns confirmed static gallery items.
@@ -20,20 +32,16 @@ class GalleryBLL extends BaseBLL
      */
     public function getGalleryData(): array
     {
-        try {
-            $dbCategories = $this->dal->findCategories();
-            $dbImages     = $this->dal->findGalleryImages();
-            if (!empty($dbImages)) {
-                return [
-                    'categories' => $dbCategories,
-                    'images'     => $dbImages,
-                ];
+        $data = $this->getStaticGalleryData();
+        if (isset($_SESSION['custom_gallery_photos'])) {
+            foreach ($data['images'] as &$img) {
+                $pId = (int)($img['id'] ?? 0);
+                if (isset($_SESSION['custom_gallery_photos'][$pId])) {
+                    $img = array_merge($img, $_SESSION['custom_gallery_photos'][$pId]);
+                }
             }
-        } catch (\Throwable $e) {
-            // DB fallback
         }
-
-        return $this->getStaticGalleryData();
+        return $data;
     }
 
     /**

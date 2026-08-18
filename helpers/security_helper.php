@@ -63,6 +63,11 @@ function sanitise_string(mixed $value): string
     return trim(strip_tags((string) $value));
 }
 
+function sanitize(mixed $value): string
+{
+    return sanitise_string($value);
+}
+
 /**
  * Sanitise an email address.
  * Returns empty string if invalid.

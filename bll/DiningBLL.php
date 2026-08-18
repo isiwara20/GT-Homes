@@ -12,6 +12,48 @@ class DiningBLL extends BaseBLL
         $this->dal = new DiningDAL();
     }
 
+    public function getMenuCategories(): array
+    {
+        $cats = $this->getCategoriesWithItems();
+        if (isset($_SESSION['custom_dining_items'])) {
+            foreach ($cats as &$cat) {
+                $cSlug = $cat['slug'] ?? '';
+                if (isset($_SESSION['custom_dining_items'][$cSlug])) {
+                    $cat['items'] = $_SESSION['custom_dining_items'][$cSlug];
+                }
+            }
+        }
+        return $cats;
+    }
+
+    public function saveMenuItem(string $catSlug, array $itemData): bool
+    {
+        $cats = $this->getMenuCategories();
+        foreach ($cats as $cat) {
+            if (($cat['slug'] ?? '') === $catSlug) {
+                $items = $cat['items'] ?? [];
+                $found = false;
+                foreach ($items as &$it) {
+                    if (isset($itemData['id']) && $itemData['id'] > 0 && ($it['id'] ?? 0) === $itemData['id']) {
+                        $it = array_merge($it, $itemData);
+                        $found = true;
+                        break;
+                    }
+                }
+                if (!$found) {
+                    $itemData['id'] = time();
+                    $items[] = $itemData;
+                }
+                if (!isset($_SESSION['custom_dining_items'])) {
+                    $_SESSION['custom_dining_items'] = [];
+                }
+                $_SESSION['custom_dining_items'][$catSlug] = $items;
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Get all dining categories with items.
      * Uses database if populated, otherwise falls back to confirmed static categories.
