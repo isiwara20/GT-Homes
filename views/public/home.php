@@ -545,42 +545,42 @@ partial('partials/public_header', [
       <div class="gallery-grid">
 
         <div class="gallery-item gallery-item--wide">
-          <img src="<?= asset('images/gallery/gallery_1.jpg') ?>" alt="Resort Aerial View" class="gallery-item__img" loading="lazy">
+          <img src="<?= asset('images/memories/memory_1.jpg') ?>" alt="Resort Courtyard & Celebration Ambiance" class="gallery-item__img" loading="lazy">
           <div class="gallery-item__overlay">
-            <span class="gallery-item__caption">Tropical Haven &amp; Pool</span>
+            <span class="gallery-item__caption">Tropical Haven &amp; Celebrations</span>
           </div>
         </div>
 
         <div class="gallery-item">
-          <img src="<?= asset('images/experiences/pool.jpg') ?>" alt="Poolside Sun Loungers" class="gallery-item__img" loading="lazy">
+          <img src="<?= asset('images/memories/memory_2.jpg') ?>" alt="Sunlit Poolside Relaxing" class="gallery-item__img" loading="lazy">
           <div class="gallery-item__overlay">
             <span class="gallery-item__caption">Sunlit Relaxing</span>
           </div>
         </div>
 
         <div class="gallery-item">
-          <img src="<?= asset('images/experiences/cinema.jpg') ?>" alt="Private Mini Cinema Room" class="gallery-item__img" loading="lazy">
+          <img src="<?= asset('images/memories/memory_3.jpg') ?>" alt="Private Evening Setup" class="gallery-item__img" loading="lazy">
           <div class="gallery-item__overlay">
-            <span class="gallery-item__caption">Movie Night</span>
+            <span class="gallery-item__caption">Special Moments</span>
           </div>
         </div>
 
         <div class="gallery-item">
-          <img src="<?= asset('images/rooms/orchid/main.jpg') ?>" alt="Orchid Bedroom Suite" class="gallery-item__img" loading="lazy">
+          <img src="<?= asset('images/memories/memory_4.jpg') ?>" alt="Warm Suite Comfort" class="gallery-item__img" loading="lazy">
           <div class="gallery-item__overlay">
             <span class="gallery-item__caption">Peaceful Nights</span>
           </div>
         </div>
 
         <div class="gallery-item gallery-item--wide">
-          <img src="<?= asset('images/experiences/dining.jpg') ?>" alt="Candlelight Dinner Setting" class="gallery-item__img" loading="lazy">
+          <img src="<?= asset('images/memories/memory_5.jpg') ?>" alt="Evening Garden Lighting & BBQ" class="gallery-item__img" loading="lazy">
           <div class="gallery-item__overlay">
-            <span class="gallery-item__caption">Special Celebrations</span>
+            <span class="gallery-item__caption">Evening Celebrations</span>
           </div>
         </div>
 
         <div class="gallery-item">
-          <img src="<?= asset('images/home/welcome.jpg') ?>" alt="Garden Pavilion" class="gallery-item__img" loading="lazy">
+          <img src="<?= asset('images/memories/memory_6.jpg') ?>" alt="Garden Pavilion Ambiance" class="gallery-item__img" loading="lazy">
           <div class="gallery-item__overlay">
             <span class="gallery-item__caption">Garden Moments</span>
           </div>

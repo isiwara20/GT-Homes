@@ -387,20 +387,20 @@ partial('partials/public_header', [
 
       <div class="exp-gallery-grid">
         <div class="exp-gallery-item">
-          <img src="<?= asset('images/experiences/pool.jpg') ?>" alt="GT HOMES Swimming Pool" class="exp-gallery-img" loading="lazy">
-          <div class="exp-gallery-caption">Swimming Pool</div>
+          <img src="<?= asset('images/memories/memory_7.jpg') ?>" alt="GT HOMES Resort Morning Ambiance" class="exp-gallery-img" loading="lazy">
+          <div class="exp-gallery-caption">Resort Ambiance</div>
         </div>
         <div class="exp-gallery-item">
           <img src="<?= asset('images/experiences/cinema.jpg') ?>" alt="GT HOMES Mini Cinema" class="exp-gallery-img" loading="lazy">
           <div class="exp-gallery-caption">Private Mini Cinema</div>
         </div>
         <div class="exp-gallery-item">
-          <img src="<?= asset('images/experiences/dining.jpg') ?>" alt="GT HOMES Resort Dining" class="exp-gallery-img" loading="lazy">
+          <img src="<?= asset('images/menu/menu_1.png') ?>" alt="GT HOMES Resort Dining" class="exp-gallery-img" loading="lazy">
           <div class="exp-gallery-caption">Special Dining</div>
         </div>
         <div class="exp-gallery-item">
-          <img src="<?= asset('images/home/welcome.jpg') ?>" alt="GT HOMES Resort Grounds" class="exp-gallery-img" loading="lazy">
-          <div class="exp-gallery-caption">Resort Grounds</div>
+          <img src="<?= asset('images/memories/memory_8.jpg') ?>" alt="GT HOMES Special Moments" class="exp-gallery-img" loading="lazy">
+          <div class="exp-gallery-caption">Special Celebrations</div>
         </div>
       </div>
 
