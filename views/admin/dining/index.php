@@ -95,7 +95,7 @@ partial('partials/admin_sidebar', [
                   <span style="color:var(--color-brand-yellow); font-weight:700; font-size:0.85rem;"><?= $iPrice ?></span>
                   <div style="display:flex; gap:0.4rem;">
                     <button type="button" class="btn btn--secondary btn--sm" style="padding:0.25rem 0.5rem; font-size:0.75rem;" 
-                            onclick="openEditMenuItemModal('<?= $catSlug ?>', <?= $itemId ?>, '<?= e(addslashes($iName)) ?>', '<?= e(addslashes($iDesc)) ?>', '<?= $it['price'] ?? '' ?>', <?= $isPop ? 'true' : 'false' ?>)">
+                            onclick="openEditMenuItemModal('<?= $catSlug ?>', <?= $itemId ?>, '<?= e(addslashes($iName)) ?>', '<?= e(addslashes($iDesc)) ?>', '<?= $it['price'] ?? '' ?>', <?= $isPop ? 'true' : 'false' ?>, '<?= e($imgPath ?? '') ?>')">
                       <i class="fa-solid fa-pen"></i> Edit &amp; Photo
                     </button>
                     <form action="<?= url('admin/dining') ?>" method="POST" onsubmit="return confirm('Remove menu item <?= $iName ?>?');" style="display:inline;">
@@ -146,11 +146,11 @@ partial('partials/admin_sidebar', [
       </div>
 
       <!-- Dish Photo Upload Field -->
-      <div style="background:rgba(0,0,0,0.3); border:1px dashed var(--color-brand-lovi); border-radius:var(--radius-lg); padding:1rem; margin-bottom:1.25rem;">
-        <label style="display:block; font-size:0.85rem; font-weight:700; color:var(--color-brand-yellow); margin-bottom:0.3rem;">
-          <i class="fa-solid fa-camera"></i> Upload Dish Photo:
+      <div style="margin-bottom:1.25rem;">
+        <label style="display:block; font-size:0.85rem; font-weight:600; color:white; margin-bottom:0.38rem;">
+          <i class="fa-solid fa-camera" style="color:var(--color-brand-yellow); margin-right:0.3rem;"></i> Select Dish Photo File:
         </label>
-        <input type="file" name="dish_image" accept="image/*" style="width:100%; color:white; font-size:0.85rem;">
+        <input type="file" name="dish_image" accept="image/*" id="dish-file-input" style="width:100%; color:white; font-size:0.85rem; background:rgba(0,0,0,0.5); padding:0.6rem; border-radius:var(--radius-md); border:1px solid rgba(255,255,255,0.2);">
       </div>
 
       <div style="margin-bottom:1.5rem; display:flex; align-items:center; gap:0.5rem;">
@@ -168,6 +168,19 @@ partial('partials/admin_sidebar', [
 </div>
 
 <script>
+function previewWaPhoto(input, targetId) {
+  if (input && input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const img = document.getElementById(targetId);
+      if (img) {
+        img.src = e.target.result;
+      }
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
 function openAddMenuItemModal(catSlug) {
   document.getElementById('menu-cat-slug').value = catSlug;
   document.getElementById('menu-item-id').value = '0';
@@ -176,10 +189,12 @@ function openAddMenuItemModal(catSlug) {
   document.getElementById('menu-item-desc').value = '';
   document.getElementById('menu-item-price').value = '';
   document.getElementById('menu-item-popular').checked = false;
+  document.getElementById('dish-photo-preview').src = "<?= asset('images/branding/Logo.png') ?>";
+  document.getElementById('dish-file-input').value = "";
   document.getElementById('menu-item-modal').style.display = 'flex';
 }
 
-function openEditMenuItemModal(catSlug, id, name, desc, price, isPop) {
+function openEditMenuItemModal(catSlug, id, name, desc, price, isPop, imgUrl) {
   document.getElementById('menu-cat-slug').value = catSlug;
   document.getElementById('menu-item-id').value = id;
   document.getElementById('menu-modal-title').textContent = 'Edit Menu Item';
@@ -187,6 +202,10 @@ function openEditMenuItemModal(catSlug, id, name, desc, price, isPop) {
   document.getElementById('menu-item-desc').value = desc;
   document.getElementById('menu-item-price').value = price;
   document.getElementById('menu-item-popular').checked = isPop;
+  if (imgUrl) {
+    document.getElementById('dish-photo-preview').src = imgUrl;
+  }
+  document.getElementById('dish-file-input').value = "";
   document.getElementById('menu-item-modal').style.display = 'flex';
 }
 

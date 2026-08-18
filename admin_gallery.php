@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $title       = sanitize($_POST['title'] ?? 'Resort Memory');
         $catSlug     = sanitize($_POST['category_slug'] ?? 'celebrations');
         $description = sanitize($_POST['description'] ?? '');
+        $photoSize   = sanitize($_POST['photo_size'] ?? '4/3');
         $isFeatured  = !empty($_POST['is_featured']);
         $catName     = $categoryMap[$catSlug] ?? 'Special Moments';
 
@@ -58,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'title'         => $title,
             'description'   => $description,
             'image'         => $imagePath,
+            'photo_size'    => $photoSize,
             'is_featured'   => $isFeatured,
         ];
 
@@ -74,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $title       = sanitize($_POST['title'] ?? '');
         $catSlug     = sanitize($_POST['category_slug'] ?? 'rooms');
         $description = sanitize($_POST['description'] ?? '');
+        $photoSize   = sanitize($_POST['photo_size'] ?? '4/3');
         $isFeatured  = !empty($_POST['is_featured']);
         $catName     = $categoryMap[$catSlug] ?? 'General';
 
@@ -82,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'category_slug' => $catSlug,
             'category_name' => $catName,
             'description'   => $description,
+            'photo_size'    => $photoSize,
             'is_featured'   => $isFeatured,
         ];
 
