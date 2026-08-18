@@ -82,13 +82,13 @@ partial('partials/public_header', [
 
         <div class="dining-intro__media">
           <div class="dining-intro__img-wrapper">
-            <img src="<?= asset('images/experiences/dining.jpg') ?>"
-                 alt="GT HOMES Dining Experience and Table Setup"
+            <img src="<?= asset('images/menu/menu_1.png') ?>"
+                 alt="GT HOMES Resort Real Menu Card Page 1"
                  class="dining-intro__img-main"
                  loading="lazy">
             <div class="dining-intro__badge">
-              <span class="dining-intro__badge-title">Resort Dining</span>
-              <span class="dining-intro__badge-sub">Fresh &amp; Made to Order</span>
+              <span class="dining-intro__badge-title">Resort Menu</span>
+              <span class="dining-intro__badge-sub">Real Photo Preview</span>
             </div>
           </div>
         </div>
@@ -119,8 +119,8 @@ partial('partials/public_header', [
           </div>
         </div>
         <div class="dining-feature-box__media">
-          <img src="<?= asset('images/experiences/dining.jpg') ?>"
-               alt="GT HOMES Plated Sri Lankan Feast"
+          <img src="<?= asset('images/menu/menu_2.png') ?>"
+               alt="GT HOMES Resort Real Menu Card Page 2"
                class="dining-feature-box__img"
                loading="lazy">
         </div>
@@ -223,14 +223,51 @@ partial('partials/public_header', [
   </section>
 
   <!-- ════════════════════════════════════════════════════════════
+       SECTION 04B — REAL MENU PHOTOS GALLERY & LIGHTBOX
+  ════════════════════════════════════════════════════════════ -->
+  <section class="section section--surface real-menu-gallery-section" id="real-menu-photos" aria-label="Real Resort Menu Photos">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow"><i class="fa-solid fa-camera"></i> OFFICIAL MENU CARDS</span>
+        <h2 class="section-title">Resort Menu Photos &amp; Pages</h2>
+        <p class="section-subtitle">
+          Browse through our actual menu cards and freshly prepared dish photos. Click any page to view in high resolution.
+        </p>
+      </div>
+
+      <div class="menu-photos-grid">
+        <?php for ($m = 1; $m <= 10; $m++): ?>
+          <div class="menu-photo-card" data-menu-lightbox="<?= asset('images/menu/menu_' . $m . '.png') ?>" data-page="<?= $m ?>">
+            <div class="menu-photo-card__img-wrapper">
+              <img src="<?= asset('images/menu/menu_' . $m . '.png') ?>" 
+                   alt="GT HOMES Resort Real Menu Page <?= $m ?>" 
+                   class="menu-photo-card__img" 
+                   loading="lazy">
+              <div class="menu-photo-card__overlay">
+                <span class="menu-photo-card__zoom-btn">
+                  <i class="fa-solid fa-magnifying-glass-plus"></i> View Menu Page <?= $m ?>
+                </span>
+              </div>
+            </div>
+            <div class="menu-photo-card__footer">
+              <span class="menu-photo-card__title"><i class="fa-solid fa-book-open"></i> Menu Page <?= $m ?></span>
+              <span class="menu-photo-card__badge">High Res</span>
+            </div>
+          </div>
+        <?php endfor; ?>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
        SECTION 05 — SRI LANKAN SPECIALS HIGHLIGHT
   ════════════════════════════════════════════════════════════ -->
-  <section class="section section--surface sri-lankan-specials-section" aria-label="Sri Lankan Authentic Flavours">
+  <section class="section sri-lankan-specials-section" aria-label="Sri Lankan Authentic Flavours">
     <div class="container">
       <div class="sri-lankan-box">
         <div class="sri-lankan-box__media">
-          <img src="<?= asset('images/experiences/dining.jpg') ?>"
-               alt="Traditional Sri Lankan Claypot Rice and Curries"
+          <img src="<?= asset('images/menu/menu_3.png') ?>"
+               alt="GT HOMES Real Menu Card Page 3"
                class="sri-lankan-box__img"
                loading="lazy">
           <div class="sri-lankan-box__badge">
@@ -440,6 +477,89 @@ partial('partials/public_header', [
     </div>
   </section>
 
+  <!-- Lightbox Modal for Menu Photos -->
+  <div class="menu-lightbox" id="menu-lightbox" role="dialog" aria-modal="true" aria-label="Real Menu Photo Viewer">
+    <div class="menu-lightbox__content">
+      <button class="menu-lightbox__close" id="lightbox-close" aria-label="Close viewer">&times;</button>
+      <button class="menu-lightbox__nav menu-lightbox__prev" id="lightbox-prev" aria-label="Previous menu page">&lt;</button>
+      <button class="menu-lightbox__nav menu-lightbox__next" id="lightbox-next" aria-label="Next menu page">&gt;</button>
+      <img src="" alt="Menu Photo" class="menu-lightbox__img" id="lightbox-img">
+      <div class="menu-lightbox__caption">
+        <span id="lightbox-caption-text">Menu Page 1</span>
+        <span id="lightbox-counter">(1 of 10)</span>
+      </div>
+    </div>
+  </div>
+
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const lightbox = document.getElementById('menu-lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const captionText = document.getElementById('lightbox-caption-text');
+  const counterText = document.getElementById('lightbox-counter');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+  const menuCards = document.querySelectorAll('.menu-photo-card');
+
+  if (!lightbox || !menuCards.length) return;
+
+  const totalPages = menuCards.length;
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    const card = menuCards[currentIndex];
+    const imgSrc = card.getAttribute('data-menu-lightbox');
+    const pageNum = card.getAttribute('data-page');
+
+    lightboxImg.src = imgSrc;
+    lightboxImg.alt = 'GT HOMES Real Menu Page ' + pageNum;
+    captionText.textContent = 'Menu Card Page ' + pageNum;
+    counterText.textContent = '(' + (currentIndex + 1) + ' of ' + totalPages + ')';
+
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % totalPages;
+    openLightbox(currentIndex);
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + totalPages) % totalPages;
+    openLightbox(currentIndex);
+  }
+
+  menuCards.forEach(function (card, idx) {
+    card.addEventListener('click', function () {
+      openLightbox(idx);
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  if (nextBtn) nextBtn.addEventListener('click', showNext);
+  if (prevBtn) prevBtn.addEventListener('click', showPrev);
+
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+  });
+});
+</script>
 
 <?php partial('partials/public_footer'); ?>

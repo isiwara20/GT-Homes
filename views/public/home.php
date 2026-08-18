@@ -123,42 +123,42 @@ partial('partials/public_header', [
 
         <div class="feature-strip__item">
           <div class="feature-strip__icon">
-            <i class="fa-solid fa-bed"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
           </div>
           <span class="feature-strip__title">Comfortable Rooms</span>
         </div>
 
         <div class="feature-strip__item">
           <div class="feature-strip__icon">
-            <i class="fa-solid fa-water-ladder"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6c.6 0 1.2.2 1.8.6l.4.3c1.2.8 2.8.8 4 0l.4-.3c1.2-.8 2.8-.8 4 0l.4.3c1.2.8 2.8.8 4 0l.4-.3c.6-.4 1.2-.6 1.8-.6"/><path d="M2 12c.6 0 1.2.2 1.8.6l.4.3c1.2.8 2.8.8 4 0l.4-.3c1.2-.8 2.8-.8 4 0l.4.3c1.2.8 2.8.8 4 0l.4-.3c.6-.4 1.2-.6 1.8-.6"/><path d="M2 18c.6 0 1.2.2 1.8.6l.4.3c1.2.8 2.8.8 4 0l.4-.3c1.2-.8 2.8-.8 4 0l.4.3c1.2.8 2.8.8 4 0l.4-.3c.6-.4 1.2-.6 1.8-.6"/></svg>
           </div>
           <span class="feature-strip__title">Swimming Pool</span>
         </div>
 
         <div class="feature-strip__item">
           <div class="feature-strip__icon">
-            <i class="fa-solid fa-film"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="2.18" ry="2.18"/><line x1="7" x2="7" y1="2" y2="22"/><line x1="17" x2="17" y1="2" y2="22"/><line x1="2" x2="22" y1="12" y2="12"/><line x1="2" x2="7" y1="7" y2="7"/><line x1="2" x2="7" y1="17" y2="17"/><line x1="17" x2="22" y1="17" y2="17"/><line x1="17" x2="22" y1="7" y2="7"/></svg>
           </div>
           <span class="feature-strip__title">Mini Cinema</span>
         </div>
 
         <div class="feature-strip__item">
           <div class="feature-strip__icon">
-            <i class="fa-solid fa-utensils"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
           </div>
           <span class="feature-strip__title">Special Dining</span>
         </div>
 
         <div class="feature-strip__item">
           <div class="feature-strip__icon">
-            <i class="fa-solid fa-champagne-glasses"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 22h8"/><path d="M12 11v11"/><path d="m19 3-7 8-7-8Z"/><path d="M5 3h14"/></svg>
           </div>
           <span class="feature-strip__title">Private Experiences</span>
         </div>
 
         <div class="feature-strip__item">
           <div class="feature-strip__icon">
-            <i class="fa-solid fa-heart"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
           </div>
           <span class="feature-strip__title">Memorable Moments</span>
         </div>
@@ -203,28 +203,28 @@ partial('partials/public_header', [
 
           <div class="welcome-features">
             <div class="welcome-feature-item">
-              <i class="fa-solid fa-check"></i>
-              <span>Comfortable accommodation</span>
+              <i class="fa-solid fa-bed"></i>
+              <span>Comfortable Rooms</span>
             </div>
             <div class="welcome-feature-item">
-              <i class="fa-solid fa-check"></i>
-              <span>Relaxing swimming pool</span>
+              <i class="fa-solid fa-water-ladder"></i>
+              <span>Swimming Pool</span>
             </div>
             <div class="welcome-feature-item">
-              <i class="fa-solid fa-check"></i>
-              <span>Private mini cinema</span>
+              <i class="fa-solid fa-film"></i>
+              <span>Mini Cinema</span>
             </div>
             <div class="welcome-feature-item">
-              <i class="fa-solid fa-check"></i>
-              <span>Special dining experiences</span>
+              <i class="fa-solid fa-utensils"></i>
+              <span>Special Dining</span>
             </div>
             <div class="welcome-feature-item">
-              <i class="fa-solid fa-check"></i>
-              <span>Warm Sri Lankan hospitality</span>
+              <i class="fa-solid fa-champagne-glasses"></i>
+              <span>Private Experiences</span>
             </div>
             <div class="welcome-feature-item">
-              <i class="fa-solid fa-check"></i>
-              <span>Memorable celebrations</span>
+              <i class="fa-solid fa-heart"></i>
+              <span>Memorable Moments</span>
             </div>
           </div>
 
@@ -495,7 +495,7 @@ partial('partials/public_header', [
       <div class="dining-grid">
 
         <div class="dining-card">
-          <img src="<?= asset('images/experiences/dining.jpg') ?>" alt="Traditional Sri Lankan Feast" class="dining-card__img" loading="lazy">
+          <img src="<?= asset('images/menu/menu_1.png') ?>" alt="GT HOMES Real Resort Menu Card" class="dining-card__img" loading="lazy">
           <div class="dining-card__body">
             <h3 class="dining-card__title">Sri Lankan Traditional Feast</h3>
             <p class="dining-card__text">Authentic rice and curry spreads prepared with fresh local spices and traditional claypot aromas.</p>

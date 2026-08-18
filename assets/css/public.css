@@ -512,22 +512,37 @@
 }
 
 .feature-strip__icon {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: var(--radius-full);
   background: var(--brand-yellow-light);
   color: var(--brand-lovi);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   border: 1px solid rgba(246, 221, 99, 0.6);
-  transition: background var(--transition-fast), color var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(122, 24, 56, 0.08);
+  transition: all var(--transition-fast);
+}
+
+.feature-strip__icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--brand-lovi);
+  fill: none;
+  transition: stroke var(--transition-fast);
 }
 
 .feature-strip__item:hover .feature-strip__icon {
   background: var(--brand-lovi);
   color: var(--brand-yellow);
+  border-color: var(--brand-lovi);
+  box-shadow: 0 4px 12px rgba(122, 24, 56, 0.2);
+}
+
+.feature-strip__item:hover .feature-strip__icon svg {
+  stroke: var(--brand-yellow);
 }
 
 .feature-strip__title {
@@ -3991,4 +4006,238 @@
   color: var(--muted);
   line-height: 1.5;
   margin: 0;
+}
+
+/* ──────────────────────────────────────
+   REAL MENU PHOTOS GALLERY & LIGHTBOX
+────────────────────────────────────── */
+.real-menu-gallery-section {
+  padding-block: 5rem;
+  background: linear-gradient(180deg, var(--ivory) 0%, var(--cream) 100%);
+  border-bottom: 1px solid var(--border);
+}
+
+.menu-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 1200px) {
+  .menu-photos-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-photos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-photos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.menu-photo-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-photo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(122, 24, 56, 0.15);
+  border-color: var(--brand-lovi);
+}
+
+.menu-photo-card__img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.menu-photo-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.menu-photo-card:hover .menu-photo-card__img {
+  transform: scale(1.05);
+}
+
+.menu-photo-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(76, 16, 38, 0.65);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.menu-photo-card:hover .menu-photo-card__overlay {
+  opacity: 1;
+}
+
+.menu-photo-card__zoom-btn {
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: var(--brand-lovi-light);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.menu-photo-card__footer {
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--white);
+}
+
+.menu-photo-card__title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.menu-photo-card__title i {
+  color: var(--brand-lovi);
+}
+
+.menu-photo-card__badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--brand-lovi);
+  background: var(--brand-yellow-light);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Lightbox Modal */
+.menu-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(15, 10, 15, 0.92);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+  padding: 1.5rem;
+}
+
+.menu-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-lightbox__content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-lightbox__img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.menu-lightbox__caption {
+  margin-top: 1rem;
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menu-lightbox__close {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: var(--white);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: background var(--transition-fast);
+}
+
+.menu-lightbox__close:hover {
+  background: var(--brand-lovi);
+}
+
+.menu-lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: var(--white);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: background var(--transition-fast);
+}
+
+.menu-lightbox__nav:hover {
+  background: var(--brand-lovi);
+}
+
+.menu-lightbox__prev { left: -60px; }
+.menu-lightbox__next { right: -60px; }
+
+@media (max-width: 768px) {
+  .menu-lightbox__prev { left: 10px; top: auto; bottom: -50px; transform: none; }
+  .menu-lightbox__next { right: 10px; top: auto; bottom: -50px; transform: none; }
+  .menu-lightbox__close { top: -40px; right: 10px; }
 }
