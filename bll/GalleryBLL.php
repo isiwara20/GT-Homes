@@ -12,6 +12,35 @@ class GalleryBLL extends BaseBLL
         $this->dal = new GalleryDAL();
     }
 
+    public function addPhotoItem(array $photoData): bool
+    {
+        if (!isset($_SESSION['new_gallery_photos'])) {
+            $_SESSION['new_gallery_photos'] = [];
+        }
+        $_SESSION['new_gallery_photos'][] = $photoData;
+        return true;
+    }
+
+    public function deletePhotoItem(int $id): bool
+    {
+        if (!isset($_SESSION['deleted_gallery_photo_ids'])) {
+            $_SESSION['deleted_gallery_photo_ids'] = [];
+        }
+        $_SESSION['deleted_gallery_photo_ids'][] = $id;
+
+        // Unlink file if uploaded dynamically
+        $data = $this->getGalleryData();
+        foreach ($data['images'] as $img) {
+            if ((int)($img['id'] ?? 0) === $id && !empty($img['image'])) {
+                $fullPath = dirname(__DIR__) . '/assets/' . ltrim($img['image'], '/');
+                if (file_exists($fullPath) && is_file($fullPath)) {
+                    @unlink($fullPath);
+                }
+            }
+        }
+        return true;
+    }
+
     public function updatePhotoItem(int $id, array $data): bool
     {
         if (!isset($_SESSION['custom_gallery_photos'])) {
@@ -33,14 +62,39 @@ class GalleryBLL extends BaseBLL
     public function getGalleryData(): array
     {
         $data = $this->getStaticGalleryData();
+        $images = $data['images'];
+
+        // Filter out deleted photos
+        if (!empty($_SESSION['deleted_gallery_photo_ids'])) {
+            $deletedIds = $_SESSION['deleted_gallery_photo_ids'];
+            $images = array_filter($images, fn($img) => !in_array((int)($img['id'] ?? 0), $deletedIds));
+        }
+
+        // Apply custom photo updates
         if (isset($_SESSION['custom_gallery_photos'])) {
-            foreach ($data['images'] as &$img) {
+            foreach ($images as &$img) {
                 $pId = (int)($img['id'] ?? 0);
                 if (isset($_SESSION['custom_gallery_photos'][$pId])) {
                     $img = array_merge($img, $_SESSION['custom_gallery_photos'][$pId]);
                 }
             }
         }
+
+        // Append newly added photos
+        if (!empty($_SESSION['new_gallery_photos'])) {
+            foreach ($_SESSION['new_gallery_photos'] as $newP) {
+                $nId = (int)($newP['id'] ?? 0);
+                if (!empty($_SESSION['deleted_gallery_photo_ids']) && in_array($nId, $_SESSION['deleted_gallery_photo_ids'])) {
+                    continue;
+                }
+                if (isset($_SESSION['custom_gallery_photos'][$nId])) {
+                    $newP = array_merge($newP, $_SESSION['custom_gallery_photos'][$nId]);
+                }
+                $images[] = $newP;
+            }
+        }
+
+        $data['images'] = array_values($images);
         return $data;
     }
 

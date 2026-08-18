@@ -27,7 +27,7 @@ partial('partials/admin_sidebar', [
     <?= flash() ?>
 
     <div style="margin-bottom:1.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-      <p style="color:rgba(255,255,255,0.7); font-size:0.95rem;">Manage dining categories, food items, pricing, and popular dish tags.</p>
+      <p style="color:rgba(255,255,255,0.7); font-size:0.95rem;">Manage dining categories, food items, pricing, upload dish photos, and chef special badges.</p>
       <button type="button" class="btn btn--primary btn--md" onclick="openAddMenuItemModal('breakfast')">
         <i class="fa-solid fa-plus"></i> Add New Menu Item
       </button>
@@ -54,7 +54,7 @@ partial('partials/admin_sidebar', [
             </button>
           </div>
 
-          <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:1rem;">
+          <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:1.25rem;">
             <?php foreach ($items as $it): ?>
               <?php
               $itemId   = (int)($it['id'] ?? 0);
@@ -62,8 +62,25 @@ partial('partials/admin_sidebar', [
               $iDesc    = e($it['description'] ?? '');
               $iPrice   = !empty($it['price']) ? 'LKR ' . number_format((float)$it['price']) : 'Included / Enquiry';
               $isPop    = !empty($it['is_popular']);
+              $hasImage = !empty($it['image']);
+              $imgPath  = $hasImage ? asset($it['image']) : null;
               ?>
-              <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius-lg); padding:1rem; display:flex; flex-direction:column; justify-space-between;">
+              <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius-lg); padding:1rem; display:flex; flex-direction:column; justify-content:space-between;">
+                
+                <?php if ($hasImage): ?>
+                  <div style="position:relative; aspect-ratio:16/9; border-radius:var(--radius-md); overflow:hidden; margin-bottom:0.75rem; border:1px solid rgba(255,255,255,0.1);">
+                    <img src="<?= $imgPath ?>" alt="<?= $iName ?>" style="width:100%; height:100%; object-fit:cover;">
+                    <form action="<?= url('admin/dining') ?>" method="POST" onsubmit="return confirm('Delete dish photo for <?= $iName ?>?');" style="position:absolute; top:0.5rem; right:0.5rem;">
+                      <input type="hidden" name="action" value="delete_photo">
+                      <input type="hidden" name="category_slug" value="<?= $catSlug ?>">
+                      <input type="hidden" name="item_id" value="<?= $itemId ?>">
+                      <button type="submit" style="background:rgba(122,24,56,0.9); color:white; border:none; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; cursor:pointer;" title="Delete Dish Photo">
+                        <i class="fa-solid fa-trash-can" style="font-size:0.75rem;"></i>
+                      </button>
+                    </form>
+                  </div>
+                <?php endif; ?>
+
                 <div>
                   <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:0.4rem;">
                     <strong style="color:white; font-size:0.95rem; font-family:var(--font-heading);"><?= $iName ?></strong>
@@ -74,13 +91,24 @@ partial('partials/admin_sidebar', [
                   <p style="color:rgba(255,255,255,0.6); font-size:0.82rem; margin-bottom:0.75rem; line-height:1.4;"><?= $iDesc ?></p>
                 </div>
 
-                <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.06); pt-2; margin-top:auto; padding-top:0.6rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.06); padding-top:0.6rem; margin-top:auto;">
                   <span style="color:var(--color-brand-yellow); font-weight:700; font-size:0.85rem;"><?= $iPrice ?></span>
-                  <button type="button" class="btn btn--secondary btn--sm" style="padding:0.25rem 0.5rem; font-size:0.75rem;" 
-                          onclick="openEditMenuItemModal('<?= $catSlug ?>', <?= $itemId ?>, '<?= e(addslashes($iName)) ?>', '<?= e(addslashes($iDesc)) ?>', '<?= $it['price'] ?? '' ?>', <?= $isPop ? 'true' : 'false' ?>)">
-                    <i class="fa-solid fa-pen"></i> Edit
-                  </button>
+                  <div style="display:flex; gap:0.4rem;">
+                    <button type="button" class="btn btn--secondary btn--sm" style="padding:0.25rem 0.5rem; font-size:0.75rem;" 
+                            onclick="openEditMenuItemModal('<?= $catSlug ?>', <?= $itemId ?>, '<?= e(addslashes($iName)) ?>', '<?= e(addslashes($iDesc)) ?>', '<?= $it['price'] ?? '' ?>', <?= $isPop ? 'true' : 'false' ?>)">
+                      <i class="fa-solid fa-pen"></i> Edit &amp; Photo
+                    </button>
+                    <form action="<?= url('admin/dining') ?>" method="POST" onsubmit="return confirm('Remove menu item <?= $iName ?>?');" style="display:inline;">
+                      <input type="hidden" name="action" value="delete_item">
+                      <input type="hidden" name="category_slug" value="<?= $catSlug ?>">
+                      <input type="hidden" name="item_id" value="<?= $itemId ?>">
+                      <button type="submit" class="btn btn--secondary btn--sm" style="padding:0.25rem 0.4rem; font-size:0.75rem; color:#f87171; border-color:rgba(248,113,113,0.3);" title="Remove Item">
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>
+                    </form>
+                  </div>
                 </div>
+
               </div>
             <?php endforeach; ?>
           </div>
@@ -92,29 +120,37 @@ partial('partials/admin_sidebar', [
   </main>
 </div>
 
-<!-- Edit Menu Item Modal -->
-<div id="menu-item-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(4px); z-index:9999; align-items:center; justify-content:center; padding:1rem;">
-  <div style="background:#1E1129; border:1px solid var(--color-brand-lovi); border-radius:var(--radius-xl); padding:2rem; width:90%; max-width:500px; color:white;">
+<!-- Edit / Add Menu Item Modal -->
+<div id="menu-item-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); backdrop-filter:blur(4px); z-index:9999; align-items:center; justify-content:center; padding:1rem; overflow-y:auto;">
+  <div style="background:#1E1129; border:1px solid var(--color-brand-lovi); border-radius:var(--radius-xl); padding:2rem; width:90%; max-width:520px; color:white; max-height:90vh; overflow-y:auto;">
     <h3 style="margin-bottom:1rem; color:var(--color-brand-yellow);" id="menu-modal-title">Menu Item Details</h3>
 
-    <form action="<?= url('admin/dining') ?>" method="POST">
+    <form action="<?= url('admin/dining') ?>" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="action" value="save_item">
       <input type="hidden" name="category_slug" id="menu-cat-slug">
       <input type="hidden" name="item_id" id="menu-item-id" value="0">
 
       <div style="margin-bottom:1rem;">
-        <label style="display:block; font-size:0.85rem; margin-bottom:0.3rem;">Item Name:</label>
-        <input type="text" name="name" id="menu-item-name" required style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); color:white; padding:0.5rem; border-radius:var(--radius-md);">
+        <label style="display:block; font-size:0.85rem; margin-bottom:0.3rem;">Item / Dish Name:</label>
+        <input type="text" name="name" id="menu-item-name" required placeholder="e.g. Sri Lankan Seafood Curry" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); color:white; padding:0.55rem; border-radius:var(--radius-md);">
       </div>
 
       <div style="margin-bottom:1rem;">
         <label style="display:block; font-size:0.85rem; margin-bottom:0.3rem;">Description:</label>
-        <textarea name="description" id="menu-item-desc" rows="3" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); color:white; padding:0.5rem; border-radius:var(--radius-md); font-size:0.85rem;"></textarea>
+        <textarea name="description" id="menu-item-desc" rows="3" placeholder="Ingredients and flavor profile..." style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); color:white; padding:0.55rem; border-radius:var(--radius-md); font-size:0.85rem;"></textarea>
       </div>
 
       <div style="margin-bottom:1rem;">
         <label style="display:block; font-size:0.85rem; margin-bottom:0.3rem;">Price (LKR) — Leave blank for Included / Enquiry:</label>
-        <input type="number" step="50" name="price" id="menu-item-price" placeholder="e.g. 1800" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); color:white; padding:0.5rem; border-radius:var(--radius-md);">
+        <input type="number" step="50" name="price" id="menu-item-price" placeholder="e.g. 1800" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); color:white; padding:0.55rem; border-radius:var(--radius-md);">
+      </div>
+
+      <!-- Dish Photo Upload Field -->
+      <div style="background:rgba(0,0,0,0.3); border:1px dashed var(--color-brand-lovi); border-radius:var(--radius-lg); padding:1rem; margin-bottom:1.25rem;">
+        <label style="display:block; font-size:0.85rem; font-weight:700; color:var(--color-brand-yellow); margin-bottom:0.3rem;">
+          <i class="fa-solid fa-camera"></i> Upload Dish Photo:
+        </label>
+        <input type="file" name="dish_image" accept="image/*" style="width:100%; color:white; font-size:0.85rem;">
       </div>
 
       <div style="margin-bottom:1.5rem; display:flex; align-items:center; gap:0.5rem;">
@@ -124,7 +160,7 @@ partial('partials/admin_sidebar', [
 
       <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
         <button type="button" onclick="closeMenuItemModal()" class="btn btn--secondary btn--sm">Cancel</button>
-        <button type="submit" class="btn btn--primary btn--sm"><i class="fa-solid fa-floppy-disk"></i> Save Item</button>
+        <button type="submit" class="btn btn--primary btn--sm"><i class="fa-solid fa-floppy-disk"></i> Save Item &amp; Photo</button>
       </div>
 
     </form>

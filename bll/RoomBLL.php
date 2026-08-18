@@ -12,6 +12,52 @@ class RoomBLL extends BaseBLL
         $this->dal = new RoomDAL();
     }
 
+    public function deleteRoomPhoto(string $slug, string $photoPath): bool
+    {
+        $rooms = $this->getActiveRooms();
+        foreach ($rooms as $r) {
+            if (($r['slug'] ?? '') === $slug) {
+                $gallery = $r['gallery'] ?? [];
+                $newGallery = array_values(array_filter($gallery, fn($p) => $p !== $photoPath));
+                $newMainImage = $r['image'] ?? 'images/home/welcome.jpg';
+                if ($newMainImage === $photoPath && !empty($newGallery)) {
+                    $newMainImage = $newGallery[0];
+                }
+                $this->updateRoomData($slug, [
+                    'gallery' => $newGallery,
+                    'image'   => $newMainImage,
+                ]);
+
+                // Unlink file if stored in assets
+                $fullPath = dirname(__DIR__) . '/assets/' . ltrim($photoPath, '/');
+                if (file_exists($fullPath) && is_file($fullPath)) {
+                    @unlink($fullPath);
+                }
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function addRoom(array $roomData): bool
+    {
+        if (!isset($_SESSION['new_rooms_added'])) {
+            $_SESSION['new_rooms_added'] = [];
+        }
+        $_SESSION['new_rooms_added'][] = $roomData;
+        return true;
+    }
+
+    public function deleteRoom(string $slug): bool
+    {
+        if (!isset($_SESSION['deleted_room_slugs'])) {
+            $_SESSION['deleted_room_slugs'] = [];
+        }
+        $_SESSION['deleted_room_slugs'][] = $slug;
+        return true;
+    }
+
     public function updateRoomData(string $slug, array $data): bool
     {
         if (!isset($_SESSION['custom_room_data'])) {
@@ -33,6 +79,14 @@ class RoomBLL extends BaseBLL
     public function getActiveRooms(): array
     {
         $rooms = $this->getStaticRooms();
+
+        // Filter out deleted rooms
+        if (!empty($_SESSION['deleted_room_slugs'])) {
+            $deletedSlugs = $_SESSION['deleted_room_slugs'];
+            $rooms = array_filter($rooms, fn($r) => !in_array($r['slug'], $deletedSlugs));
+        }
+
+        // Apply custom updates to static rooms
         if (isset($_SESSION['custom_room_data'])) {
             foreach ($rooms as &$r) {
                 if (isset($_SESSION['custom_room_data'][$r['slug']])) {
@@ -40,7 +94,21 @@ class RoomBLL extends BaseBLL
                 }
             }
         }
-        return $rooms;
+
+        // Append newly added rooms
+        if (!empty($_SESSION['new_rooms_added'])) {
+            foreach ($_SESSION['new_rooms_added'] as $newR) {
+                if (!empty($_SESSION['deleted_room_slugs']) && in_array($newR['slug'], $_SESSION['deleted_room_slugs'])) {
+                    continue;
+                }
+                if (isset($_SESSION['custom_room_data'][$newR['slug']])) {
+                    $newR = array_merge($newR, $_SESSION['custom_room_data'][$newR['slug']]);
+                }
+                $rooms[] = $newR;
+            }
+        }
+
+        return array_values($rooms);
     }
 
     /**

@@ -12,6 +12,50 @@ class DiningBLL extends BaseBLL
         $this->dal = new DiningDAL();
     }
 
+    public function deleteMenuItem(string $catSlug, int $itemId): bool
+    {
+        $cats = $this->getMenuCategories();
+        foreach ($cats as $cat) {
+            if (($cat['slug'] ?? '') === $catSlug) {
+                $items = array_values(array_filter($cat['items'] ?? [], fn($it) => ($it['id'] ?? 0) !== $itemId));
+                if (!isset($_SESSION['custom_dining_items'])) {
+                    $_SESSION['custom_dining_items'] = [];
+                }
+                $_SESSION['custom_dining_items'][$catSlug] = $items;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function deleteMenuPhoto(string $catSlug, int $itemId): bool
+    {
+        $cats = $this->getMenuCategories();
+        foreach ($cats as $cat) {
+            if (($cat['slug'] ?? '') === $catSlug) {
+                $items = $cat['items'] ?? [];
+                foreach ($items as &$it) {
+                    if (($it['id'] ?? 0) === $itemId) {
+                        $oldImg = $it['image'] ?? '';
+                        unset($it['image']);
+                        if (!empty($oldImg)) {
+                            $fullPath = dirname(__DIR__) . '/assets/' . ltrim($oldImg, '/');
+                            if (file_exists($fullPath) && is_file($fullPath)) {
+                                @unlink($fullPath);
+                            }
+                        }
+                    }
+                }
+                if (!isset($_SESSION['custom_dining_items'])) {
+                    $_SESSION['custom_dining_items'] = [];
+                }
+                $_SESSION['custom_dining_items'][$catSlug] = $items;
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function getMenuCategories(): array
     {
         $cats = $this->getCategoriesWithItems();

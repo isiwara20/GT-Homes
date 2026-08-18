@@ -39,7 +39,7 @@
   overflow-y: auto;
   z-index: 1000;
   transition: transform var(--transition-base);
-  box-shadow: 4px 0 15px rgba(0,0,0,0.3);
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .admin-sidebar__header {
@@ -282,13 +282,16 @@
   .admin-sidebar {
     transform: translateX(-100%);
   }
+
   .admin-sidebar.is-open {
     transform: translateX(0);
   }
+
   .admin-main {
     margin-left: 0 !important;
     width: 100% !important;
   }
+
   #admin-sidebar-toggle {
     display: inline-block !important;
   }
