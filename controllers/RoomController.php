@@ -38,15 +38,29 @@ class RoomController extends BaseController
     public function show(string $slug): array
     {
         $slug = slugify($slug);
+        $rooms = $this->roomBll->getActiveRooms();
+        $targetRoom = null;
 
-        // Future: $room = $this->roomBll->getRoomBySlug($slug);
-        // Future: if (!$room) { $this->abort(404); }
+        foreach ($rooms as $r) {
+            if ($r['slug'] === $slug) {
+                $targetRoom = $r;
+                break;
+            }
+        }
+
+        if (!$targetRoom && !empty($rooms)) {
+            $targetRoom = $rooms[0];
+        }
+
+        $title = ($targetRoom ? $targetRoom['name'] . ' Suite' : 'Room Details') . ' | GT HOMES';
+        $desc  = $targetRoom['description'] ?? 'View details about this room at GT HOMES Holiday Resort.';
 
         return [
-            'pageTitle'       => 'Room Details — ' . APP_NAME,
-            'metaDescription' => 'View details about this room at GT HOMES Holiday Resort.',
+            'pageTitle'       => $title,
+            'metaDescription' => $desc,
             'slug'            => $slug,
-            'room'            => null,   // populated in later steps
+            'room'            => $targetRoom,
+            'allRooms'        => $rooms,
         ];
     }
 }

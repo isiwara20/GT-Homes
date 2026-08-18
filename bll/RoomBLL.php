@@ -69,6 +69,15 @@ class RoomBLL extends BaseBLL
                 'view' => 'Garden View',
                 'price_per_night' => null, // Rate available on enquiry
                 'image' => 'images/rooms/orchid/main.jpg',
+                'gallery' => [
+                    'images/rooms/orchid/photo_1.jpg',
+                    'images/rooms/orchid/photo_2.jpg',
+                    'images/rooms/orchid/photo_3.jpg',
+                    'images/rooms/orchid/photo_4.jpg',
+                    'images/rooms/orchid/photo_5.jpg',
+                    'images/rooms/orchid/photo_6.jpg',
+                    'images/rooms/orchid/photo_7.jpg',
+                ],
                 'features' => ['Air Conditioning', 'Ensuite Bathroom', 'Private Veranda', 'High-Speed Wi-Fi'],
             ],
             [
@@ -83,6 +92,14 @@ class RoomBLL extends BaseBLL
                 'view' => 'Resort View',
                 'price_per_night' => null,
                 'image' => 'images/rooms/dahiliya/main.jpg',
+                'gallery' => [
+                    'images/rooms/dahiliya/photo_1.jpg',
+                    'images/rooms/dahiliya/photo_2.jpg',
+                    'images/rooms/dahiliya/photo_3.jpg',
+                    'images/rooms/dahiliya/photo_4.jpg',
+                    'images/rooms/dahiliya/photo_5.jpg',
+                    'images/rooms/dahiliya/photo_6.jpg',
+                ],
                 'features' => ['Air Conditioning', 'Spacious Seating', 'Flat-screen TV', 'Mini Fridge'],
             ],
             [
@@ -97,6 +114,14 @@ class RoomBLL extends BaseBLL
                 'view' => 'Pool View',
                 'price_per_night' => null,
                 'image' => 'images/rooms/lotus/main.jpg',
+                'gallery' => [
+                    'images/rooms/lotus/photo_1.jpg',
+                    'images/rooms/lotus/photo_2.jpg',
+                    'images/rooms/lotus/photo_3.jpg',
+                    'images/rooms/lotus/photo_4.jpg',
+                    'images/rooms/lotus/photo_5.jpg',
+                    'images/rooms/lotus/photo_6.jpg',
+                ],
                 'features' => ['Direct Pool Access', 'Air Conditioning', 'Private Terrace', 'Complimentary Tea/Coffee'],
             ],
             [
@@ -111,6 +136,17 @@ class RoomBLL extends BaseBLL
                 'view' => 'Courtyard View',
                 'price_per_night' => null,
                 'image' => 'images/rooms/daffodil/main.jpg',
+                'gallery' => [
+                    'images/rooms/daffodil/photo_1.jpg',
+                    'images/rooms/daffodil/photo_2.jpg',
+                    'images/rooms/daffodil/photo_3.jpg',
+                    'images/rooms/daffodil/photo_4.jpg',
+                    'images/rooms/daffodil/photo_5.jpg',
+                    'images/rooms/daffodil/photo_6.jpg',
+                    'images/rooms/daffodil/photo_7.jpg',
+                    'images/rooms/daffodil/photo_8.jpg',
+                    'images/rooms/daffodil/photo_9.jpg',
+                ],
                 'features' => ['Air Conditioning', 'Work Desk', 'Ensuite Shower', 'Daily Housekeeping'],
             ],
             [
@@ -125,6 +161,15 @@ class RoomBLL extends BaseBLL
                 'view' => 'Panoramic Resort View',
                 'price_per_night' => null,
                 'image' => 'images/rooms/rose/main.jpg',
+                'gallery' => [
+                    'images/rooms/rose/photo_1.jpg',
+                    'images/rooms/rose/photo_2.jpg',
+                    'images/rooms/rose/photo_3.jpg',
+                    'images/rooms/rose/photo_4.jpg',
+                    'images/rooms/rose/photo_5.jpg',
+                    'images/rooms/rose/photo_6.jpg',
+                    'images/rooms/rose/photo_7.jpg',
+                ],
                 'features' => ['Premium Linens', 'Air Conditioning', 'Seating Lounge', 'Mini Cinema Access'],
             ],
         ];

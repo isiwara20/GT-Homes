@@ -213,10 +213,24 @@ partial('partials/public_header', [
                 <img src="<?= $image ?>"
                      alt="GT HOMES <?= $name ?> Room Photo"
                      class="room-showcase__img"
+                     id="main-img-<?= $slug ?>"
                      loading="lazy">
                 <div class="room-showcase__num-tag"><?= $num ?></div>
                 <div class="room-showcase__view-tag"><i class="fa-solid fa-mountain-sun"></i> <?= $view ?></div>
               </div>
+              <?php if (!empty($room['gallery'])): ?>
+                <div class="room-gallery-thumbs" aria-label="<?= $name ?> Photo Gallery">
+                  <?php foreach ($room['gallery'] as $gIdx => $gPath): ?>
+                    <button class="room-thumb-btn <?= $gIdx === 0 ? 'is-active' : '' ?>"
+                            data-target-img="main-img-<?= $slug ?>"
+                            data-full-src="<?= asset($gPath) ?>"
+                            type="button"
+                            aria-label="View photo <?= $gIdx + 1 ?> of <?= $name ?>">
+                      <img src="<?= asset($gPath) ?>" alt="<?= $name ?> Photo <?= $gIdx + 1 ?>" loading="lazy">
+                    </button>
+                  <?php endforeach; ?>
+                </div>
+              <?php endif; ?>
             </div>
 
             <div class="room-showcase__content">
@@ -568,5 +582,29 @@ partial('partials/public_header', [
   </section>
 
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const thumbBtns = document.querySelectorAll('.room-thumb-btn');
+  thumbBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const targetId = this.getAttribute('data-target-img');
+      const fullSrc  = this.getAttribute('data-full-src');
+      const targetImg = document.getElementById(targetId);
+
+      if (targetImg && fullSrc) {
+        targetImg.src = fullSrc;
+      }
+
+      // Update active thumbnail state within parent container
+      const parent = this.closest('.room-gallery-thumbs');
+      if (parent) {
+        parent.querySelectorAll('.room-thumb-btn').forEach(b => b.classList.remove('is-active'));
+        this.classList.add('is-active');
+      }
+    });
+  });
+});
+</script>
 
 <?php partial('partials/public_footer'); ?>
