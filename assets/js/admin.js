@@ -11,23 +11,35 @@
 // Admin Sidebar Toggle (mobile)
 // ─────────────────────────────────────────────
 (function initAdminSidebar() {
-  const toggleBtn = document.getElementById('admin-sidebar-toggle');
-  const sidebar   = document.getElementById('admin-sidebar');
-  const overlay   = document.getElementById('admin-overlay');
+  document.addEventListener('click', function (e) {
+    const toggleBtn = e.target.closest('#admin-sidebar-toggle');
+    const sidebar   = document.getElementById('admin-sidebar');
+    const overlay   = document.getElementById('admin-overlay');
 
-  if (!toggleBtn || !sidebar) return;
+    if (toggleBtn && sidebar) {
+      e.stopPropagation();
+      const isOpen = sidebar.classList.toggle('is-open');
+      if (overlay) overlay.style.display = isOpen ? 'block' : 'none';
+      toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      return;
+    }
 
-  toggleBtn.addEventListener('click', function () {
-    const isOpen = sidebar.classList.toggle('is-open');
-    if (overlay) overlay.style.display = isOpen ? 'block' : 'none';
+    if (overlay && e.target === overlay) {
+      if (sidebar) sidebar.classList.remove('is-open');
+      overlay.style.display = 'none';
+    }
   });
 
-  if (overlay) {
-    overlay.addEventListener('click', function () {
-      sidebar.classList.remove('is-open');
-      overlay.style.display = 'none';
-    });
-  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      const sidebar = document.getElementById('admin-sidebar');
+      const overlay = document.getElementById('admin-overlay');
+      if (sidebar && sidebar.classList.contains('is-open')) {
+        sidebar.classList.remove('is-open');
+        if (overlay) overlay.style.display = 'none';
+      }
+    }
+  });
 }());
 
 // ─────────────────────────────────────────────

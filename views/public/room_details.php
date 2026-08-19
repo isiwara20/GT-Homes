@@ -77,7 +77,7 @@ partial('partials/public_header', [
               <i class="fa-solid fa-camera" style="color: var(--brand-lovi);"></i> Real Room Photos (<?= count($rGallery) ?>)
             </h3>
             
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;">
+            <div class="detail-gallery-grid">
               <?php foreach ($rGallery as $gIdx => $gPath): ?>
                 <div class="detail-gallery-thumb" 
                      data-full-img="<?= asset($gPath) ?>" 
@@ -163,6 +163,11 @@ partial('partials/public_header', [
 </main>
 
 <style>
+.detail-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
 .detail-gallery-thumb:hover {
   border-color: var(--brand-lovi) !important;
   transform: scale(1.03);
@@ -173,6 +178,16 @@ partial('partials/public_header', [
 @media (max-width: 992px) {
   .room-details-section .container > div {
     grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+@media (max-width: 576px) {
+  .detail-gallery-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+  #main-detail-img {
+    aspect-ratio: 16/11 !important;
   }
 }
 </style>

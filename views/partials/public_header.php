@@ -67,7 +67,7 @@ set_security_headers();
 
     <!-- Desktop Navigation Links -->
     <ul class="public-nav__links" role="list">
-      <li><a href="<?= url() ?>"           class="public-nav__link <?= is_active('') && (current_path() === '/GT-Homes/' || current_path() === '/') ? 'public-nav__link--active' : '' ?>">Home</a></li>
+      <li><a href="<?= url() ?>"           class="public-nav__link <?= is_active('') ? 'public-nav__link--active' : '' ?>">Home</a></li>
       <li><a href="<?= url('rooms') ?>"        class="public-nav__link <?= is_active('rooms') ? 'public-nav__link--active' : '' ?>">Rooms</a></li>
       <li><a href="<?= url('dining') ?>"       class="public-nav__link <?= is_active('dining') ? 'public-nav__link--active' : '' ?>">Dining</a></li>
       <li><a href="<?= url('experiences') ?>"  class="public-nav__link <?= is_active('experiences') ? 'public-nav__link--active' : '' ?>">Experiences</a></li>
@@ -84,16 +84,21 @@ set_security_headers();
       </a>
     </div>
 
-    <!-- Mobile Hamburger Toggle -->
-    <button class="public-nav__hamburger"
-            id="nav-hamburger"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            aria-controls="nav-mobile-drawer">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <!-- Mobile Navigation Actions -->
+    <div class="public-nav__mobile-actions">
+      <a href="<?= url('booking') ?>" class="btn btn--primary btn--sm public-nav__mobile-cta" id="nav-book-btn-mobile">
+        <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book
+      </a>
+      <button class="public-nav__hamburger"
+              id="nav-hamburger"
+              aria-label="Open navigation menu"
+              aria-expanded="false"
+              aria-controls="nav-mobile-drawer">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
 
   </div>
 </nav>
@@ -120,11 +125,14 @@ set_security_headers();
   </div>
 
   <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border);">
-    <a href="<?= url('booking') ?>" class="btn btn--primary" style="width: 100%; justify-content: center; margin-bottom: 1rem;">
+    <a href="<?= url('booking') ?>" class="btn btn--primary" style="width: 100%; justify-content: center; margin-bottom: 0.75rem;">
       <i class="fa-solid fa-calendar-check"></i> Book Your Stay
     </a>
-    <a href="tel:+94777872280" class="btn btn--secondary" style="width: 100%; justify-content: center;">
-      <i class="fa-solid fa-phone"></i> 0777 872 280
+    <a href="tel:+94777872280" class="btn btn--secondary" style="width: 100%; justify-content: center; margin-bottom: 0.5rem;">
+      <i class="fa-solid fa-phone"></i> Hotline: 0777 872 280
+    </a>
+    <a href="tel:+94817872280" class="btn btn--secondary" style="width: 100%; justify-content: center;">
+      <i class="fa-solid fa-building"></i> Office: 0817 872 280
     </a>
   </div>
 </div>

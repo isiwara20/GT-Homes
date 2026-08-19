@@ -12,8 +12,13 @@ class AboutDAL extends BaseDAL
     public function getResortMetadata(): array
     {
         return [
-            'name' => APP_NAME,
-            'hotline' => '0777 872 280',
+            'name'     => APP_NAME,
+            'hotline'  => HOTLINE_DISPLAY,
+            'office'   => OFFICE_DISPLAY,
+            'email'    => CONTACT_EMAIL,
+            'address'  => RESORT_ADDRESS,
+            'maps_url' => MAPS_URL,
+            'since'    => ESTABLISHED_YEAR,
         ];
     }
 }

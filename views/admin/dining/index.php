@@ -13,14 +13,7 @@ partial('partials/admin_sidebar', [
 
 <div class="admin-main">
 
-  <header class="admin-topbar">
-    <h1 class="admin-topbar__title">Resort Dining &amp; Menu Control</h1>
-    <div style="display:flex; align-items:center; gap:1rem;">
-      <span style="font-size:var(--text-sm); color:rgba(255,255,255,0.6);">
-        <?= date('l, d F Y') ?>
-      </span>
-    </div>
-  </header>
+  <?php partial('partials/admin_topbar', ['title' => 'Resort Dining & Menu Control']); ?>
 
   <main class="admin-body">
 
@@ -150,7 +143,10 @@ partial('partials/admin_sidebar', [
         <label style="display:block; font-size:0.85rem; font-weight:600; color:white; margin-bottom:0.38rem;">
           <i class="fa-solid fa-camera" style="color:var(--color-brand-yellow); margin-right:0.3rem;"></i> Select Dish Photo File:
         </label>
-        <input type="file" name="dish_image" accept="image/*" id="dish-file-input" style="width:100%; color:white; font-size:0.85rem; background:rgba(0,0,0,0.5); padding:0.6rem; border-radius:var(--radius-md); border:1px solid rgba(255,255,255,0.2);">
+        <div style="display:flex; align-items:center; gap:0.85rem;">
+          <img id="dish-photo-preview" src="<?= asset('images/branding/Logo.png') ?>" alt="Dish photo preview" style="width:52px; height:52px; object-fit:cover; border-radius:var(--radius-md); border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.5); flex-shrink:0;">
+          <input type="file" name="dish_image" accept="image/*" id="dish-file-input" onchange="previewWaPhoto(this, 'dish-photo-preview')" style="flex:1; color:white; font-size:0.85rem; background:rgba(0,0,0,0.5); padding:0.6rem; border-radius:var(--radius-md); border:1px solid rgba(255,255,255,0.2);">
+        </div>
       </div>
 
       <div style="margin-bottom:1.5rem; display:flex; align-items:center; gap:0.5rem;">
@@ -182,35 +178,58 @@ function previewWaPhoto(input, targetId) {
 }
 
 function openAddMenuItemModal(catSlug) {
-  document.getElementById('menu-cat-slug').value = catSlug;
-  document.getElementById('menu-item-id').value = '0';
-  document.getElementById('menu-modal-title').textContent = 'Add New Menu Item';
-  document.getElementById('menu-item-name').value = '';
-  document.getElementById('menu-item-desc').value = '';
-  document.getElementById('menu-item-price').value = '';
-  document.getElementById('menu-item-popular').checked = false;
-  document.getElementById('dish-photo-preview').src = "<?= asset('images/branding/Logo.png') ?>";
-  document.getElementById('dish-file-input').value = "";
-  document.getElementById('menu-item-modal').style.display = 'flex';
+  const catInput  = document.getElementById('menu-cat-slug');
+  const idInput   = document.getElementById('menu-item-id');
+  const titleEl   = document.getElementById('menu-modal-title');
+  const nameInput = document.getElementById('menu-item-name');
+  const descInput = document.getElementById('menu-item-desc');
+  const prcInput  = document.getElementById('menu-item-price');
+  const popInput  = document.getElementById('menu-item-popular');
+  const prevImg   = document.getElementById('dish-photo-preview');
+  const fileInput = document.getElementById('dish-file-input');
+
+  if (catInput) catInput.value = catSlug || 'breakfast';
+  if (idInput) idInput.value = '0';
+  if (titleEl) titleEl.textContent = 'Add New Menu Item';
+  if (nameInput) nameInput.value = '';
+  if (descInput) descInput.value = '';
+  if (prcInput) prcInput.value = '';
+  if (popInput) popInput.checked = false;
+  if (prevImg) prevImg.src = "<?= asset('images/branding/Logo.png') ?>";
+  if (fileInput) fileInput.value = "";
+
+  const modal = document.getElementById('menu-item-modal');
+  if (modal) modal.style.display = 'flex';
 }
 
 function openEditMenuItemModal(catSlug, id, name, desc, price, isPop, imgUrl) {
-  document.getElementById('menu-cat-slug').value = catSlug;
-  document.getElementById('menu-item-id').value = id;
-  document.getElementById('menu-modal-title').textContent = 'Edit Menu Item';
-  document.getElementById('menu-item-name').value = name;
-  document.getElementById('menu-item-desc').value = desc;
-  document.getElementById('menu-item-price').value = price;
-  document.getElementById('menu-item-popular').checked = isPop;
-  if (imgUrl) {
-    document.getElementById('dish-photo-preview').src = imgUrl;
-  }
-  document.getElementById('dish-file-input').value = "";
-  document.getElementById('menu-item-modal').style.display = 'flex';
+  const catInput  = document.getElementById('menu-cat-slug');
+  const idInput   = document.getElementById('menu-item-id');
+  const titleEl   = document.getElementById('menu-modal-title');
+  const nameInput = document.getElementById('menu-item-name');
+  const descInput = document.getElementById('menu-item-desc');
+  const prcInput  = document.getElementById('menu-item-price');
+  const popInput  = document.getElementById('menu-item-popular');
+  const prevImg   = document.getElementById('dish-photo-preview');
+  const fileInput = document.getElementById('dish-file-input');
+
+  if (catInput) catInput.value = catSlug;
+  if (idInput) idInput.value = id;
+  if (titleEl) titleEl.textContent = 'Edit ' + name;
+  if (nameInput) nameInput.value = name;
+  if (descInput) descInput.value = desc;
+  if (prcInput) prcInput.value = price;
+  if (popInput) popInput.checked = Boolean(isPop);
+  if (prevImg) prevImg.src = imgUrl ? imgUrl : "<?= asset('images/branding/Logo.png') ?>";
+  if (fileInput) fileInput.value = "";
+
+  const modal = document.getElementById('menu-item-modal');
+  if (modal) modal.style.display = 'flex';
 }
 
 function closeMenuItemModal() {
-  document.getElementById('menu-item-modal').style.display = 'none';
+  const modal = document.getElementById('menu-item-modal');
+  if (modal) modal.style.display = 'none';
 }
 </script>
 

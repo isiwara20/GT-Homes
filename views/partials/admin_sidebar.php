@@ -16,13 +16,12 @@ $currentPath = current_path();
 
   <!-- Sidebar Header -->
   <div class="admin-sidebar__header">
-    <div class="admin-sidebar__logo">
+    <a href="<?= url('admin') ?>" class="admin-sidebar__logo" aria-label="GT HOMES Admin Dashboard">
       <img src="<?= asset('images/branding/Logo.png') ?>"
            alt="GT HOMES Logo"
-           class="admin-sidebar__logo-img"
-           onerror="this.style.display='none'">
+           class="admin-sidebar__logo-img">
       <span class="admin-sidebar__logo-text">GT HOMES</span>
-    </div>
+    </a>
     <p class="admin-sidebar__subtitle">Resort Admin Panel</p>
   </div>
 
@@ -102,3 +101,6 @@ $currentPath = current_path();
   </div>
 
 </aside>
+
+<!-- Admin Mobile Sidebar Overlay Backdrop -->
+<div id="admin-overlay" class="admin-overlay"></div>

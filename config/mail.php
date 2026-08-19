@@ -18,8 +18,8 @@ define('MAIL_FROM_NAME',    'GT HOMES Holiday Resort');
 // ─────────────────────────────────────────────
 // Recipients
 // ─────────────────────────────────────────────
-define('MAIL_ADMIN_ADDRESS',    'info@gthomes.lk');   // enquiries go here
-define('MAIL_BOOKING_ADDRESS',  'bookings@gthomes.lk');
+define('MAIL_ADMIN_ADDRESS',    'gthomes99ck@gmail.com');   // enquiries go here
+define('MAIL_BOOKING_ADDRESS',  'gthomes99ck@gmail.com');
 
 // ─────────────────────────────────────────────
 // Behaviour

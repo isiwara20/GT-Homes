@@ -13,14 +13,7 @@ partial('partials/admin_sidebar', [
 
 <div class="admin-main">
 
-  <header class="admin-topbar">
-    <h1 class="admin-topbar__title">Guest Contact Inbox</h1>
-    <div style="display:flex; align-items:center; gap:1rem;">
-      <span style="font-size:var(--text-sm); color:rgba(255,255,255,0.6);">
-        <?= date('l, d F Y') ?>
-      </span>
-    </div>
-  </header>
+  <?php partial('partials/admin_topbar', ['title' => 'Guest Contact Inbox']); ?>
 
   <main class="admin-body">
 

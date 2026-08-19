@@ -20,20 +20,7 @@ partial('partials/admin_sidebar', [
 <!-- Admin Main Content -->
 <div class="admin-main">
 
-  <!-- Topbar -->
-  <header class="admin-topbar">
-    <button id="admin-sidebar-toggle"
-            aria-label="Toggle sidebar"
-            style="background:none; border:none; color:rgba(255,255,255,0.6); font-size:1.25rem; cursor:pointer; display:none;">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-    <h1 class="admin-topbar__title">Dashboard</h1>
-    <div style="display:flex; align-items:center; gap:1rem;">
-      <span style="font-size:var(--text-sm); color:rgba(255,255,255,0.5);">
-        <?= date('l, d F Y') ?>
-      </span>
-    </div>
-  </header>
+  <?php partial('partials/admin_topbar', ['title' => 'Admin Dashboard']); ?>
 
   <!-- Dashboard Body -->
   <main class="admin-body" id="dashboard-main">

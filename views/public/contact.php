@@ -56,6 +56,17 @@ partial('partials/public_header', [
           </a>
         </div>
 
+        <div class="contact-channel-card">
+          <div class="contact-channel-card__icon contact-channel-card__icon--lovi">
+            <i class="fa-solid fa-building" aria-hidden="true"></i>
+          </div>
+          <h3 class="contact-channel-card__title">Office Line</h3>
+          <p class="contact-channel-card__text">Contact our resort office for general inquiries and assistance.</p>
+          <a href="tel:+94817872280" class="contact-channel-card__link">
+            0817 872 280
+          </a>
+        </div>
+
         <div class="contact-channel-card contact-channel-card--highlight">
           <div class="contact-channel-card__icon contact-channel-card__icon--whatsapp">
             <i class="fab fa-whatsapp" aria-hidden="true"></i>
@@ -77,8 +88,8 @@ partial('partials/public_header', [
           </div>
           <h3 class="contact-channel-card__title">Email Address</h3>
           <p class="contact-channel-card__text">Send us an email for detailed group booking inquiries.</p>
-          <a href="mailto:gthomesresort@gmail.com" class="contact-channel-card__link">
-            gthomesresort@gmail.com
+          <a href="mailto:gthomes99ck@gmail.com" class="contact-channel-card__link">
+            gthomes99ck@gmail.com
           </a>
         </div>
 
@@ -86,11 +97,15 @@ partial('partials/public_header', [
           <div class="contact-channel-card__icon contact-channel-card__icon--lovi">
             <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
           </div>
-          <h3 class="contact-channel-card__title">Resort Location</h3>
-          <p class="contact-channel-card__text">GT HOMES Holiday Resort (Pvt) Ltd, Sri Lanka.</p>
-          <span class="contact-channel-card__link" style="color: var(--charcoal);">
-            Sri Lanka
-          </span>
+          <h3 class="contact-channel-card__title">Resort Location <span style="font-size:0.75rem; font-weight:normal; background:var(--surface); padding:2px 8px; border-radius:12px; border:1px solid var(--border); color:var(--muted); margin-left:4px;">Since 2016</span></h3>
+          <p class="contact-channel-card__text"><?= e(RESORT_ADDRESS) ?></p>
+          <a href="<?= e(MAPS_URL) ?>"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn btn--secondary btn--sm"
+             style="margin-top: 0.5rem;">
+            <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> View on Google Maps
+          </a>
         </div>
 
       </div>

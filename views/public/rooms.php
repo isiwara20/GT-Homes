@@ -524,8 +524,9 @@ partial('partials/public_header', [
             <i class="fa-solid fa-envelope" aria-hidden="true"></i> Send an Enquiry
           </a>
         </div>
-        <div style="margin-top: 1.5rem; font-size: 0.95rem; color: rgba(255,255,255,0.75);">
-          <i class="fa-solid fa-phone" aria-hidden="true"></i> Direct Phone &amp; Hotline: <strong>0777 872 280</strong>
+        <div style="margin-top: 1.5rem; font-size: 0.95rem; color: rgba(255,255,255,0.75); display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+          <span><i class="fa-solid fa-phone" aria-hidden="true"></i> Hotline: <strong>0777 872 280</strong></span>
+          <span><i class="fa-solid fa-building" aria-hidden="true"></i> Office: <strong>0817 872 280</strong></span>
         </div>
       </div>
     </div>

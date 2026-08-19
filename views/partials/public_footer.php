@@ -55,14 +55,22 @@
           <i class="fa-solid fa-phone"></i>
           <div>
             <a href="tel:+94777872280" style="color:var(--white); font-weight:600; text-decoration:none;">0777 872 280</a>
-            <div style="font-size:0.75rem; color:rgba(255,255,255,0.5);">Direct Phone &amp; Hotline</div>
+            <div style="font-size:0.75rem; color:rgba(255,255,255,0.5);">Hotline &amp; Mobile</div>
+          </div>
+        </div>
+
+        <div class="public-footer__contact-item">
+          <i class="fa-solid fa-building"></i>
+          <div>
+            <a href="tel:+94817872280" style="color:var(--white); font-weight:600; text-decoration:none;">0817 872 280</a>
+            <div style="font-size:0.75rem; color:rgba(255,255,255,0.5);">Office Line</div>
           </div>
         </div>
         
         <div class="public-footer__contact-item">
           <i class="fa-solid fa-envelope"></i>
           <div>
-            <span style="color:rgba(255,255,255,0.85); font-size:0.85rem;"><?= e(MAIL_ADMIN_ADDRESS) ?></span>
+            <a href="mailto:gthomes99ck@gmail.com" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none;">gthomes99ck@gmail.com</a>
             <div style="font-size:0.75rem; color:rgba(255,255,255,0.5);">Email Inquiries</div>
           </div>
         </div>
@@ -70,7 +78,10 @@
         <div class="public-footer__contact-item">
           <i class="fa-solid fa-location-dot"></i>
           <div>
-            <span style="color:rgba(255,255,255,0.85); font-size:0.85rem;">GT HOMES Holiday Resort, Sri Lanka</span>
+            <a href="<?= e(MAPS_URL) ?>" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.85); font-size:0.85rem; text-decoration:none; display:block;">
+              <?= e(RESORT_ADDRESS) ?> <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.7rem;"></i>
+            </a>
+            <div style="font-size:0.75rem; color:rgba(255,255,255,0.5);">Peradeniya, Sri Lanka (Since 2016)</div>
           </div>
         </div>
 

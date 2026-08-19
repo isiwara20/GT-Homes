@@ -353,8 +353,9 @@ partial('partials/public_header', [
           </a>
         </div>
 
-        <div style="margin-top: 1.5rem; font-size: 0.95rem; color: rgba(255,255,255,0.8);">
-          <i class="fa-solid fa-phone" aria-hidden="true"></i> Direct Dining Hotline: <strong>0777 872 280</strong>
+        <div style="margin-top: 1.5rem; font-size: 0.95rem; color: rgba(255,255,255,0.8); display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+          <span><i class="fa-solid fa-phone" aria-hidden="true"></i> Dining Hotline: <strong>0777 872 280</strong></span>
+          <span><i class="fa-solid fa-building" aria-hidden="true"></i> Office: <strong>0817 872 280</strong></span>
         </div>
       </div>
     </div>

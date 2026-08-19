@@ -96,6 +96,20 @@ function current_path(): string
  */
 function is_active(string $segment): bool
 {
-    $current = current_path();
-    return str_contains($current, '/' . ltrim($segment, '/'));
+    $current  = current_path();
+    $segment  = trim($segment, '/');
+
+    // Extract relative path after app base path
+    $basePath = parse_url(APP_URL, PHP_URL_PATH) ?? '';
+    if ($basePath !== '' && str_starts_with($current, $basePath)) {
+        $current = substr($current, strlen($basePath));
+    }
+    
+    $current = trim($current, '/');
+
+    if ($segment === '' || $segment === 'home') {
+        return $current === '' || $current === 'index.php';
+    }
+
+    return $current === $segment || str_starts_with($current, $segment . '/');
 }

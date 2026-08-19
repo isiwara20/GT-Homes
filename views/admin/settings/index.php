@@ -13,14 +13,7 @@ partial('partials/admin_sidebar', [
 
 <div class="admin-main">
 
-  <header class="admin-topbar">
-    <h1 class="admin-topbar__title">Website &amp; Resort Information Settings</h1>
-    <div style="display:flex; align-items:center; gap:1rem;">
-      <span style="font-size:var(--text-sm); color:rgba(255,255,255,0.6);">
-        <?= date('l, d F Y') ?>
-      </span>
-    </div>
-  </header>
+  <?php partial('partials/admin_topbar', ['title' => 'Website & Resort Information Settings']); ?>
 
   <main class="admin-body">
 
@@ -48,12 +41,20 @@ partial('partials/admin_sidebar', [
           </div>
         </div>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.25rem; margin-bottom:1.25rem;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.25rem;">
           <div>
-            <label style="display:block; font-size:0.85rem; color:rgba(255,255,255,0.9); margin-bottom:0.4rem;">Phone Number:</label>
+            <label style="display:block; font-size:0.85rem; color:rgba(255,255,255,0.9); margin-bottom:0.4rem;">Hotline Phone Number:</label>
             <input type="text" name="phone" value="<?= e($currentSettings['phone'] ?? '') ?>"
                    style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); color:white; padding:0.65rem; border-radius:var(--radius-md); font-size:0.9rem;">
           </div>
+          <div>
+            <label style="display:block; font-size:0.85rem; color:rgba(255,255,255,0.9); margin-bottom:0.4rem;">Office Line Number:</label>
+            <input type="text" name="office_phone" value="<?= e($currentSettings['office_phone'] ?? '') ?>"
+                   style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); color:white; padding:0.65rem; border-radius:var(--radius-md); font-size:0.9rem;">
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.25rem;">
           <div>
             <label style="display:block; font-size:0.85rem; color:rgba(255,255,255,0.9); margin-bottom:0.4rem;">WhatsApp Number (Intl):</label>
             <input type="text" name="whatsapp_number" value="<?= e($currentSettings['whatsapp_number'] ?? '') ?>"
@@ -66,10 +67,17 @@ partial('partials/admin_sidebar', [
           </div>
         </div>
 
-        <div style="margin-bottom:1.25rem;">
-          <label style="display:block; font-size:0.85rem; color:rgba(255,255,255,0.9); margin-bottom:0.4rem;">Resort Physical Address:</label>
-          <input type="text" name="address" value="<?= e($currentSettings['address'] ?? '') ?>"
-                 style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); color:white; padding:0.65rem; border-radius:var(--radius-md); font-size:0.9rem;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.25rem;">
+          <div>
+            <label style="display:block; font-size:0.85rem; color:rgba(255,255,255,0.9); margin-bottom:0.4rem;">Resort Physical Address:</label>
+            <input type="text" name="address" value="<?= e($currentSettings['address'] ?? '') ?>"
+                   style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); color:white; padding:0.65rem; border-radius:var(--radius-md); font-size:0.9rem;">
+          </div>
+          <div>
+            <label style="display:block; font-size:0.85rem; color:rgba(255,255,255,0.9); margin-bottom:0.4rem;">Google Maps URL:</label>
+            <input type="url" name="maps_url" value="<?= e($currentSettings['maps_url'] ?? MAPS_URL) ?>"
+                   style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); color:white; padding:0.65rem; border-radius:var(--radius-md); font-size:0.9rem;">
+          </div>
         </div>
 
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:2rem;">

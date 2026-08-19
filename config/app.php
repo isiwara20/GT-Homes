@@ -64,10 +64,18 @@ define('UPLOAD_ALLOWED_TYPES',   ['image/jpeg', 'image/png', 'image/webp']);
 define('UPLOAD_ALLOWED_EXTS',    ['jpg', 'jpeg', 'png', 'webp']);
 
 // ─────────────────────────────────────────────
-// WhatsApp
+// WhatsApp & Contact Information
 // ─────────────────────────────────────────────
 // International format (no spaces, no dashes, with country code)
 define('WHATSAPP_NUMBER', '94777872280');   // Sri Lanka: +94 777 872 280
+define('HOTLINE_NUMBER',  '+94777872280');
+define('HOTLINE_DISPLAY', '0777 872 280');
+define('OFFICE_NUMBER',   '+94817872280');
+define('OFFICE_DISPLAY',  '0817 872 280');
+define('CONTACT_EMAIL',   'gthomes99ck@gmail.com');
+define('RESORT_ADDRESS',  'No 99/C/3, Pragathi Road, Peradeniya, Sri Lanka');
+define('MAPS_URL',        'https://www.google.com/maps/place/7%C2%B016%2727.3%22N+80%C2%B035%2717.3%22E/@7.2742367,80.5855518,826m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d7.2742367!4d80.5881267?hl=en&entry=ttu&g_ep=EgoyMDI2MDgxNi4wIKXMDSoASAFQAw%3D%3D');
+define('ESTABLISHED_YEAR','2016');
 
 // ─────────────────────────────────────────────
 // Pagination

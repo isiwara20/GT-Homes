@@ -22,7 +22,9 @@ class AboutBLL extends BaseBLL
         return [
             'company_name' => 'GT HOMES Holiday Resort (Pvt) Ltd',
             'tagline'      => 'Where Luxury Meets Authentic Sri Lankan Warmth',
-            'story'        => 'GT HOMES Holiday Resort (Pvt) Ltd was founded with a singular vision: to create a tranquil sanctuary where families, couples, and friends can escape the rush of daily life and immerse themselves in comfort, relaxation, and genuine Sri Lankan hospitality.',
+            'established'  => ESTABLISHED_YEAR,
+            'address'      => RESORT_ADDRESS,
+            'story'        => 'Established in 2016, GT HOMES Holiday Resort (Pvt) Ltd was founded with a singular vision: to create a tranquil sanctuary at No 99/C/3, Pragathi Road, Peradeniya, Sri Lanka where families, couples, and friends can escape the rush of daily life and immerse themselves in comfort, relaxation, and genuine Sri Lankan hospitality.',
             'values'       => [
                 [
                     'icon'  => 'fa-solid fa-heart',
@@ -37,7 +39,7 @@ class AboutBLL extends BaseBLL
                 [
                     'icon'  => 'fa-solid fa-leaf',
                     'title' => 'Tranquil Environment',
-                    'desc'  => 'Set amidst lush greenery, offering refreshing poolside moments and quiet verandas to slow down.'
+                    'desc'  => 'Set amidst lush greenery in Peradeniya, offering refreshing poolside moments and quiet verandas to slow down.'
                 ],
                 [
                     'icon'  => 'fa-solid fa-utensils',
@@ -46,10 +48,10 @@ class AboutBLL extends BaseBLL
                 ],
             ],
             'stats'        => [
+                ['number' => '2016', 'label' => 'Established Year'],
                 ['number' => '5', 'label' => 'Distinctive Rooms'],
                 ['number' => '1', 'label' => 'Private Mini Cinema'],
                 ['number' => '1', 'label' => 'Resort Swimming Pool'],
-                ['number' => '100%', 'label' => 'Dedicated Hospitality'],
             ]
         ];
     }

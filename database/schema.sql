@@ -236,10 +236,13 @@ CREATE TABLE IF NOT EXISTS `site_settings` (
 INSERT IGNORE INTO `site_settings` (`setting_key`, `value`, `description`) VALUES
   ('site_name',        'GT HOMES Holiday Resort',    'Website name'),
   ('site_tagline',     'Your Perfect Escape',         'Hero tagline'),
-  ('phone',            '0777 872 280',                'Primary contact number'),
+  ('phone',            '0777 872 280',                'Primary hotline contact number'),
+  ('office_phone',     '0817 872 280',                'Office line contact number'),
   ('whatsapp_number',  '94777872280',                 'WhatsApp number (international format)'),
-  ('email',            'info@gthomes.lk',             'Primary contact email'),
-  ('address',          '',                            'Physical address'),
+  ('email',            'gthomes99ck@gmail.com',       'Primary contact email'),
+  ('address',          'No 99/C/3, Pragathi Road, Peradeniya, Sri Lanka', 'Physical address'),
+  ('maps_url',         'https://www.google.com/maps/place/7%C2%B016%2727.3%22N+80%C2%B035%2717.3%22E/@7.2742367,80.5855518,826m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d7.2742367!4d80.5881267?hl=en&entry=ttu&g_ep=EgoyMDI2MDgxNi4wIKXMDSoASAFQAw%3D%3D', 'Google Maps link'),
+  ('established_year', '2016',                        'Resort established year'),
   ('facebook_url',     '',                            'Facebook page URL'),
   ('instagram_url',    '',                            'Instagram page URL');
 
