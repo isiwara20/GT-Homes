@@ -4318,3 +4318,424 @@
   height: 100%;
   object-fit: cover;
 }
+
+/* ============================================================
+   OWNER & LEADERSHIP CREDENTIALS SECTION
+   ============================================================ */
+.owner-credentials-section {
+  background: var(--ivory);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+
+.owner-section-header {
+  text-align: center;
+  max-width: 780px;
+  margin-inline: auto;
+  margin-bottom: 3.5rem;
+}
+
+.owner-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brand-lovi);
+  margin-bottom: 0.75rem;
+}
+
+.owner-eyebrow::before,
+.owner-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background: var(--brand-yellow);
+  border-radius: 2px;
+}
+
+.owner-profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Left Column: Portrait + Bio Card */
+.owner-bio-col {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.owner-bio-col:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.owner-portrait-wrap {
+  position: relative;
+  width: 100%;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, var(--brand-lovi-deep) 0%, #171217 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.owner-portrait-img,
+.owner-portrait-wrap img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.owner-bio-col:hover .owner-portrait-img,
+.owner-bio-col:hover .owner-portrait-wrap img {
+  transform: scale(1.02);
+}
+
+.owner-bio-text {
+  padding: 2rem;
+}
+
+.owner-honor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--brand-yellow);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.owner-name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  color: var(--brand-lovi-dark);
+  margin-bottom: 0.4rem;
+  line-height: 1.25;
+}
+
+.owner-title-line {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.owner-bio-para {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Right Column: Registrations, Appointments & Owner Message */
+.owner-cred-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.owner-subsection {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.owner-subsection:hover {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(122, 24, 56, 0.2);
+}
+
+.owner-subsection-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--brand-lovi-dark);
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+}
+
+.owner-subsection-label i {
+  color: var(--brand-lovi);
+  font-size: 1.1rem;
+}
+
+.owner-reg-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.owner-reg-card {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  padding: 1.1rem;
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-fast);
+}
+
+.owner-reg-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand-lovi);
+}
+
+.owner-reg-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--color-brand-lovi-pale);
+  color: var(--brand-lovi);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.owner-reg-body strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--charcoal);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.owner-reg-body p {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.owner-appt-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.owner-appt-item {
+  background: var(--ivory);
+  border-left: 3.5px solid var(--brand-lovi);
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 1rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.owner-appt-item:hover {
+  transform: translateX(3px);
+  background: var(--white);
+  border-left-color: var(--gold);
+}
+
+.owner-appt-body strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--charcoal);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  line-height: 1.35;
+}
+
+.owner-appt-body span {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* Owner's Message Dark Lovi Box */
+.owner-message-box {
+  background: linear-gradient(135deg, var(--brand-lovi-deep) 0%, var(--brand-lovi-dark) 100%);
+  color: var(--white);
+  border: 1px solid rgba(246, 221, 99, 0.2);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.owner-message-box::after {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(246, 221, 99, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.owner-message-box .owner-subsection-label {
+  color: var(--brand-yellow);
+  border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+.owner-message-box .owner-subsection-label i {
+  color: var(--brand-yellow);
+}
+
+.owner-message-quote {
+  margin: 0 0 1.5rem 0;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
+  position: relative;
+  padding-left: 1.2rem;
+  border-left: 3px solid var(--brand-yellow);
+}
+
+.owner-message-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+  padding-top: 1.25rem;
+}
+
+.owner-sig-img,
+.owner-message-signature img {
+  height: 85px;
+  max-width: 280px;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+  mix-blend-mode: screen;
+  filter: contrast(1.15) brightness(1.2) drop-shadow(0 4px 12px rgba(246, 221, 99, 0.45));
+  display: block;
+}
+
+.owner-message-signature strong {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-yellow);
+  font-weight: 700;
+}
+
+.owner-message-signature small {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Qualifications Block */
+.owner-qualifications-block {
+  margin-top: 3.5rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.owner-qual-header {
+  margin-bottom: 1.5rem;
+}
+
+.owner-qual-header .owner-subsection-label {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.owner-qualifications-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.owner-qual-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.owner-qual-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--brand-lovi);
+  background: var(--white);
+  box-shadow: var(--shadow-md);
+}
+
+.owner-qual-icon {
+  color: var(--gold);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.owner-qual-card strong {
+  font-size: 0.92rem;
+  color: var(--charcoal);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Responsive Media Queries for Owner Section */
+@media (max-width: 992px) {
+  .owner-profile-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .owner-qualifications-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .owner-reg-list,
+  .owner-appt-list,
+  .owner-qualifications-grid {
+    grid-template-columns: 1fr;
+  }
+  .owner-bio-text,
+  .owner-subsection,
+  .owner-qualifications-block {
+    padding: 1.25rem;
+  }
+}
+

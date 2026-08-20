@@ -99,7 +99,122 @@ partial('partials/public_header', [
   </section>
 
   <!-- ════════════════════════════════════════════════════════════
-       SECTION 03 — OUR CORE VALUES
+       SECTION 03 — OWNER & LEADERSHIP CREDENTIALS
+  ════════════════════════════════════════════════════════════ -->
+  <section class="section owner-credentials-section" aria-label="Owner Credentials and Leadership">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="owner-section-header">
+        <span class="owner-eyebrow">OUR LEADERSHIP</span>
+        <h2 class="section-title">Leadership, Experience &amp; Professional Credentials</h2>
+        <p class="section-subtitle">
+          Our hotel is guided by extensive professional experience spanning tourism, hospitality, religious and cultural studies, social welfare, leadership, counselling, event management, and international peace initiatives.
+        </p>
+      </div>
+
+      <!-- Founder Profile Grid -->
+      <div class="owner-profile-grid">
+        <!-- Left: Portrait + Bio -->
+        <div class="owner-bio-col">
+          <div class="owner-portrait-wrap">
+            <img src="<?= asset('images/owner-photo.jpeg') ?>" alt="Deshamanya H. A. Gayan Krishantha Kularathna" loading="lazy" class="owner-portrait-img">
+          </div>
+          <div class="owner-bio-text">
+            <span class="owner-honor-badge"><i class="fas fa-award"></i> Deshamanya</span>
+            <h3 class="owner-name">H. A. Gayan Krishantha Kularathna</h3>
+            <p class="owner-title-line">Owner &amp; Managing Director &nbsp;·&nbsp; Cultural &amp; Spiritual Tourism Specialist &nbsp;·&nbsp; Social Welfare &amp; Peace Advocate</p>
+            <p class="owner-bio-para">Our hotel is guided by Deshamanya H. A. Gayan Krishantha Kularathna, whose professional background combines tourism, hospitality, religious and cultural studies, social welfare, leadership, counselling, event management, and international peace initiatives.</p>
+          </div>
+        </div>
+
+        <!-- Right: Registrations, Appointments & Owner Message -->
+        <div class="owner-cred-col">
+          <!-- Government Registrations -->
+          <div class="owner-subsection">
+            <span class="owner-subsection-label"><i class="fas fa-landmark"></i> Government Registrations</span>
+            <div class="owner-reg-list">
+              <div class="owner-reg-card">
+                <div class="owner-reg-icon"><i class="fas fa-praying-hands"></i></div>
+                <div class="owner-reg-body">
+                  <strong>Registered Religious Teacher</strong>
+                  <p>Department of Religious Affairs, Government of Sri Lanka.</p>
+                </div>
+              </div>
+              <div class="owner-reg-card">
+                <div class="owner-reg-icon"><i class="fas fa-map-marked-alt"></i></div>
+                <div class="owner-reg-body">
+                  <strong>Registered Tourist Facility Provider</strong>
+                  <p>Department of Trade, Commerce and Tourism, Government of Sri Lanka.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Professional Appointments -->
+          <div class="owner-subsection">
+            <span class="owner-subsection-label"><i class="fas fa-globe"></i> Professional Appointments &amp; Memberships</span>
+            <div class="owner-appt-list">
+              <div class="owner-appt-item">
+                <div class="owner-appt-body">
+                  <strong>Kandy District Director</strong>
+                  <span>Sri Lanka Humanitarian Human Rights Organization</span>
+                </div>
+              </div>
+              <div class="owner-appt-item">
+                <div class="owner-appt-body">
+                  <strong>Deputy Director</strong>
+                  <span>International Human Rights Peace Mission</span>
+                </div>
+              </div>
+              <div class="owner-appt-item">
+                <div class="owner-appt-body">
+                  <strong>Member</strong>
+                  <span>International Peace Mission Conference</span>
+                </div>
+              </div>
+              <div class="owner-appt-item">
+                <div class="owner-appt-body">
+                  <strong>Patriotic Social Welfare Honor – <em>"Deshamanya"</em></strong>
+                  <span>Awarded in recognition of outstanding service to society.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Owner's Message -->
+          <div class="owner-subsection owner-message-box">
+            <span class="owner-subsection-label"><i class="fas fa-quote-left"></i> Owner's Message</span>
+            <blockquote class="owner-message-quote">
+              <p>Hospitality should feel thoughtful, warm, and beautifully delivered. We don't just offer rooms — we craft stays that reflect authentic Sri Lankan warmth, luxury, and peace of mind.</p>
+            </blockquote>
+            <div class="owner-message-signature">
+              <img src="<?= asset('images/signature.png') ?>" alt="Signature" class="owner-sig-img">
+              <strong>GAYAN KRISHANTHA KULARATHNA</strong>
+              <small>Owner &amp; Managing Director</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Qualifications Grid -->
+      <div class="owner-qualifications-block">
+        <div class="owner-qual-header">
+          <span class="owner-subsection-label"><i class="fas fa-graduation-cap"></i> Qualifications &amp; Professional Development</span>
+        </div>
+        <div class="owner-qualifications-grid">
+          <div class="owner-qual-card"><i class="fas fa-certificate owner-qual-icon"></i> <strong>Diploma in Law</strong></div>
+          <div class="owner-qual-card"><i class="fas fa-certificate owner-qual-icon"></i> <strong>Diploma in Spiritual Tourism</strong></div>
+          <div class="owner-qual-card"><i class="fas fa-certificate owner-qual-icon"></i> <strong>Diploma in Religions, Civilizations and Cultures</strong></div>
+          <div class="owner-qual-card"><i class="fas fa-certificate owner-qual-icon"></i> <strong>Diploma in Event Management</strong></div>
+          <div class="owner-qual-card"><i class="fas fa-certificate owner-qual-icon"></i> <strong>Certificate in Psychology and Counselling</strong></div>
+          <div class="owner-qual-card"><i class="fas fa-certificate owner-qual-icon"></i> <strong>Certificate in Leadership and Management</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       SECTION 04 — OUR CORE VALUES
   ════════════════════════════════════════════════════════════ -->
   <section class="section section--surface about-values-section" aria-label="Our Core Values">
     <div class="container">
