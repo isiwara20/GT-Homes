@@ -67,7 +67,11 @@ package-lock.json
 *.sql.zip
 
 # ──────────────────────────────────────
-# Sensitive Config Overrides
+# Sensitive Config & Database Files Exclusions
 # ──────────────────────────────────────
-# Add a config/local.php for local credentials that overrides db.php
-config/local.php
+config/
+config/*.php
+database/
+database/*.sql
+.env*
+!.env.example

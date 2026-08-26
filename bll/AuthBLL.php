@@ -21,12 +21,6 @@ class AuthBLL extends BaseBLL
     {
         $cleanEmail = strtolower(trim($email));
 
-        // Direct default fallback for GT HOMES Admin
-        if (($cleanEmail === 'admin@gthomes.lk' || $cleanEmail === 'admin') && $password === 'admin123') {
-            loginAdmin(1, 'admin@gthomes.lk', 'GT HOMES Admin');
-            return ['success' => true, 'message' => 'Login successful.'];
-        }
-
         // 1. Validate input format
         $validation = AuthService::validateLoginInput($email, $password);
         if (!$validation['valid']) {
